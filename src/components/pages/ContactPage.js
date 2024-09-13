@@ -1,22 +1,29 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Button } from "./ui/Button.js"
-import { Input } from "./ui/Input.js"
-import { Textarea } from "./ui/Textarea.js"
-import './ui/Contact.css'
-import { MapPinIcon, PhoneIcon, MailIcon, FacebookIcon, TwitterIcon, LinkedinIcon } from "lucide-react"
+import { useState } from "react";
+import { Button } from "./ui/Button.js";
+import { Input } from "./ui/Input.js";
+import { Textarea } from "./ui/Textarea.js";
+import "./ui/Contact.css";
+import {
+  MapPinIcon,
+  PhoneIcon,
+  MailIcon,
+  InstagramIcon,
+  TwitterIcon,
+  LinkedinIcon,
+} from "lucide-react";
 
 export default function ContactPage() {
   const [hoverStates, setHoverStates] = useState({
     name: false,
     email: false,
     message: false,
-  })
+  });
 
   const handleHover = (field, isHovering) => {
-    setHoverStates(prev => ({ ...prev, [field]: isHovering }))
-  }
+    setHoverStates((prev) => ({ ...prev, [field]: isHovering }));
+  };
 
   return (
     <div className="contact-wrapper">
@@ -28,30 +35,28 @@ export default function ContactPage() {
             <p>We're here to help you!</p>
             <form>
               <div className="form-group">
-                <Input 
-                  placeholder="Name" 
-                  onMouseEnter={() => handleHover('name', true)}
-                  onMouseLeave={() => handleHover('name', false)}
+                <Input
+                  placeholder="Name"
+                  onMouseEnter={() => handleHover("name", true)}
+                  onMouseLeave={() => handleHover("name", false)}
                 />
               </div>
               <div className="form-group">
-                <Input 
-                  type="email" 
-                  placeholder="Email" 
-                  onMouseEnter={() => handleHover('email', true)}
-                  onMouseLeave={() => handleHover('email', false)}
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  onMouseEnter={() => handleHover("email", true)}
+                  onMouseLeave={() => handleHover("email", false)}
                 />
               </div>
               <div className="form-group">
-                <Textarea 
-                  placeholder="Message" 
-                  onMouseEnter={() => handleHover('message', true)}
-                  onMouseLeave={() => handleHover('message', false)}
+                <Textarea
+                  placeholder="Message"
+                  onMouseEnter={() => handleHover("message", true)}
+                  onMouseLeave={() => handleHover("message", false)}
                 />
               </div>
-              <Button>
-                Send Message
-              </Button>
+              <Button>Send Message</Button>
             </form>
           </div>
 
@@ -74,7 +79,13 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="social-icons">
-              <FacebookIcon size={24} />
+              <a
+                href="https://www.instagram.com/greatnotes09?igsh=b3h2b3F4b3VyMHVx&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <InstagramIcon size={24} />
+              </a>
               <TwitterIcon size={24} />
               <LinkedinIcon size={24} />
             </div>
@@ -95,5 +106,5 @@ export default function ContactPage() {
         </div>
       </footer> */}
     </div>
-  )
+  );
 }
