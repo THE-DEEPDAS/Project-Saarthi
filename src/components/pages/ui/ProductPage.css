@@ -1,14 +1,12 @@
-/* Global Styles */
 body {
     font-family: sans-serif;
     background-color: #212121;
     color: white;
     margin: 0;
     padding: 0;
-  }
-  
-  /* Container */
-  .container {
+}
+
+.container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,27 +14,26 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-  }
-  
-  /* Image Carousel */
-  .image-carousel {
+}
+
+.image-carousel {
     width: 50%;
     overflow: hidden;
     position: relative;
-  }
-  
-  .carousel-track {
+}
+
+.carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-  }
-  
-  .carousel-image {
+}
+
+.carousel-image {
     width: 100%;
-    flex-shrink: 0; /* Ensures each image takes full width */
+    flex-shrink: 0;
     border-radius: 10px;
-  }
-  
-  .prev, .next {
+}
+
+.prev, .next {
     background: rgba(255, 255, 255, 0.3);
     border: none;
     padding: 10px 15px;
@@ -49,40 +46,38 @@ body {
     top: 50%;
     transform: translateY(-50%);
     transition: background-color 0.3s ease, color 0.3s ease;
-    z-index: 10; /* Ensure buttons are above the images */
-  }
-  
-  /* Positioning for Buttons */
-  .prev {
-    left: 10px; /* Position just inside the left edge of the image */
-  }
-  
-  .next {
-    right: 10px; /* Position just inside the right edge of the image */
-  }  
-  
-  /* Product Details */
-  .product-details {
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.product-details {
     text-align: center;
     width: 40%;
-  }
-  
-  .product-details h1 {
+}
+
+.product-details h1 {
     color: #7C3AED;
     font-size: 2rem;
     margin-bottom: 10px;
-  }
-  
-  .product-details p {
+}
+
+.product-details p {
     font-size: 1.2rem;
     margin-bottom: 20px;
-  }
-  
-  .product-details h2 {
+}
+
+.product-details h2 {
     margin: 10px 0;
-  }
-  
-  .grab-button {
+}
+
+.grab-button {
     background: linear-gradient(to right, #FF8A00, #FF3C00);
     color: white;
     padding: 15px 30px;
@@ -91,13 +86,13 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: transform 0.2s ease;
-  }
-  
-  .grab-button:hover {
+}
+
+.grab-button:hover {
     transform: scale(1.05);
-  }
-  
-  .try-button {
+}
+
+.try-button {
     background-color: #D3D3D3;
     color: #000;
     padding: 15px 30px;
@@ -107,9 +102,8 @@ body {
     margin-top: 15px;
     cursor: pointer;
     transition: transform 0.2s ease;
-  }
-  
-  .try-button:hover {
+}
+
+.try-button:hover {
     transform: scale(1.05);
-  }
-  
+}
