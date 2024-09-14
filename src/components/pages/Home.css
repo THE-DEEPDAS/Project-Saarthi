@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.background {
+    background-image: url("C:\Users\Manan\OneDrive\Desktop\alumniproject\Project-Saarthi-master\src\Bg\6266724.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.maintext {
+    color: white;
+    font-size: clamp(2rem, 5.5vw, 8rem) !important;
+    font-family: 'Lexend', 'sans-serif';
+    font-weight: 500;
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-shadow: 3px 3px 5px rgba(137, 118, 135, 0.721);
+}
+/*#ad9875*/
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:#827359 ;
+    
+    color: white;
+    padding: 5px;
+    border-radius: 30px;
+    width: 60%;
+    max-width: 80%vw;
+    box-sizing: border8-box;
+}
+
+.footer > div {
+    margin: 0 15px;
+    font-size: 1rem;
+    color: #161a25;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(146, 155, 181, 0.292);
+}
+.footer > div:hover{
+    color: aliceblue;
+    transform: scale(1.2);
+    transition: ease-in-out 0.4s;
+}
+
+.footer > div:active{
+    color: #161a25;
+    transform: scale(0.7);
+    transition: ease-out 0.3s;
+}
