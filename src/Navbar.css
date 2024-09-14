@@ -1,41 +1,71 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1b1b1b; /* Dark background color */
-    padding: 10px;
-    border-bottom: 2px solid #5e44a5; /* Matching color border */
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   
-  .navbar-link {
-    color: black;
-    text-decoration: none;
-    background-color: white;
-    padding: 10px 20px;
-    border-radius: 30px;
-    margin: 5px;
-    font-weight: bold;
-    display: inline-block;
-    text-align: center;
-  }
-  
-  .cart-link {
-    color: black;
-    background-color: white;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-size: 20px;
-    text-decoration: none;
-    display: inline-block;
-    margin-left: 10px;
-  }
-  
-  .navbar-link:hover,
-  .cart-link:hover {
-    background-color: #e6e6e6; /* Light gray on hover */
-  }
-  
-  #logo{
-    height: 75px;
-    width: 75px;
-  }
+  background-image: linear-gradient(#1b1b1b, rgba(27, 27, 27, 0.7));
+  padding: 6px;
+  border-bottom: 2px solid #5e44a5; /* Matching color border */
+}
+
+/* Right-side links container */
+.navbar-right {
+  display: flex;
+  margin-left: auto; /* Pushes the right links to the far right */
+}
+
+/* Styles for links */
+.navbar-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 30px;
+  margin: 5px;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Cart link */
+.cart-link {
+  color: black;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 22px;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.navbar-link:hover,
+.cart-link:hover {
+  transition: ease-in-out 0.4s;
+}
+
+#logo {
+  height: 75px;
+  width: 75px;
+  border-radius: 11px;
+}
+
+#home {
+  background-color: transparent;
+}
+
+#home:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 0.5s;
+}
+#home:active{
+  transform: scale(0.8);
+}
+
+#product:hover,#cart:hover,#contact:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 0.5s;
+}
+#product:active,#cart:active,#contact:active{
+  transform: scale(0.8);
+}
