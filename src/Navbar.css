@@ -62,10 +62,10 @@
   transform: scale(0.8);
 }
 
-#product:hover,#cart:hover,#contact:hover {
+#product:hover,#cart:hover,#contact:hover,#login:hover {
   transform: scale(1.2);
   transition: ease-in-out 0.5s;
 }
-#product:active,#cart:active,#contact:active{
+#product:active,#cart:active,#contact:active, #login:active{
   transform: scale(0.8);
 }

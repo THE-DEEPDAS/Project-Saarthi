@@ -9,7 +9,7 @@ html, body {
 }
 
 .background {
-    background-image: url("C:\Users\Manan\OneDrive\Desktop\alumniproject\Project-Saarthi-master\src\Bg\6266724.jpg");
+    background-image: url("./images/back_image.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
