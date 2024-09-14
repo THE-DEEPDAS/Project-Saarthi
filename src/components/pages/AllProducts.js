@@ -30,13 +30,16 @@ function AllProducts() {
       {/* Category Selection Cards */}
       <div className="category-cards">
         <div className="card" onClick={() => setSelectedCategory('All')}>
-          <h3>All Books</h3>
+        <h3>All Books</h3>
+        <p>Explore top-notch notes curated by expert educators, perfect for both JEE and NEET aspirants!</p>
         </div>
         <div className="card" onClick={() => setSelectedCategory('JEE')}>
-          <h3>JEE Books</h3>
+        <h3>JEE Books</h3>
+        <p>Crack JEE with this handpicked collection of the best study materials, crafted for success!</p>
         </div>
         <div className="card" onClick={() => setSelectedCategory('NEET')}>
-          <h3>NEET Books</h3>
+        <h3>NEET Books</h3>
+        <p>Master NEET with these essential notes, tailored to help you ace the exam with confidence!</p>
         </div>
       </div>
 
