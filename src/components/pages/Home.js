@@ -1,12 +1,30 @@
 import React from 'react';
+import './Home.css';
 
 const Home = () => {
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Welcome to Our Store!</h1>
-      <p>
-        Discover the best products at unbeatable prices. Shop now and enjoy a seamless shopping experience!
-      </p>
+    <div className='background'>
+      <div className='maintext'>
+        Unpacking The future <br /> of Education
+      </div>
+      <div className='footer'>
+        <div className='about'>
+          About
+        </div>
+
+        <div className='testimonies'>
+          Testimonies
+        </div>
+
+        <div className='pricing'>
+          Pricing
+        </div>
+
+        <div className='featured'>
+          Featured
+        </div>
+
+      </div>
     </div>
   );
 };
