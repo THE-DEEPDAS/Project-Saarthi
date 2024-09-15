@@ -13,6 +13,7 @@ import {
   TwitterIcon,
   LinkedinIcon,
 } from "lucide-react";
+import emailjs from "emailjs-com"; // Import EmailJS
 
 export default function ContactPage() {
   const [hoverStates, setHoverStates] = useState({
@@ -21,8 +22,53 @@ export default function ContactPage() {
     message: false,
   });
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
   const handleHover = (field, isHovering) => {
     setHoverStates((prev) => ({ ...prev, [field]: isHovering }));
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Sending the main email
+    emailjs
+      .send(
+        "your_service_id", // Replace with your service ID
+        "your_template_id", // Replace with your template ID for the message
+        {
+          from_name: formData.name, // Sender's name
+          reply_to: formData.email, // Sender's email for reply
+          message: formData.message, // Message content
+        },
+        "your_public_key" // Replace with your EmailJS public key
+      )
+      .then(() => {
+        alert("Message sent successfully!");
+
+        // Sending the acknowledgment email
+        emailjs.send(
+          "your_service_id", // Same service ID
+          "your_autoreply_template_id", // Replace with your template ID for the acknowledgment
+          {
+            to_email: formData.email, // Recipient email (the sender's email)
+            from_name: "Deep", // Your name for acknowledgment
+            reply_to: "your_email@example.com", // Your reply email
+          },
+          "your_public_key" // Same public key
+        );
+      })
+      .catch(() => {
+        alert("Failed to send message.");
+      });
   };
 
   return (
@@ -33,30 +79,42 @@ export default function ContactPage() {
           <div className="contact-form">
             <h1>Contact Us</h1>
             <p>We're here to help you!</p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <Input
                   placeholder="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   onMouseEnter={() => handleHover("name", true)}
                   onMouseLeave={() => handleHover("name", false)}
+                  required
                 />
               </div>
               <div className="form-group">
                 <Input
                   type="email"
                   placeholder="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   onMouseEnter={() => handleHover("email", true)}
                   onMouseLeave={() => handleHover("email", false)}
+                  required
                 />
               </div>
               <div className="form-group">
                 <Textarea
                   placeholder="Message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   onMouseEnter={() => handleHover("message", true)}
                   onMouseLeave={() => handleHover("message", false)}
+                  required
                 />
               </div>
-              <Button>Send Message</Button>
+              <Button type="submit">Send Message</Button>
             </form>
           </div>
 
