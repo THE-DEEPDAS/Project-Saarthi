@@ -107,3 +107,23 @@ body {
 .try-button:hover {
     transform: scale(1.05);
 }
+
+.popup-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: rgb(15, 0, 128);
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .popup-message.hidden {
+    display: none; 
+  }
+  

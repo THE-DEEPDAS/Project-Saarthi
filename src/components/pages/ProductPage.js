@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './ui/ProductPage.css';
 
-const ProductPage = () => {
+const ProductPage = ({ addToCart }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { book } = location.state || {};
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showMessage, setShowMessage] = useState(false);
 
   if (!book) {
     return <div>No book selected</div>;
@@ -23,8 +25,15 @@ const ProductPage = () => {
     );
   };
 
+  const handleAddToCart = () => {
+    addToCart(book);
+    setShowMessage(true);
+    setTimeout(() => setShowMessage(false), 2000); // Hide message after 2 seconds
+  };
+
   return (
     <div className="container">
+      {showMessage && <div className="popup-message">Item added to cart!</div>}
       {/* Image Carousel */}
       <div className="image-carousel">
         <div
@@ -49,7 +58,7 @@ const ProductPage = () => {
         <h1>{book.title}</h1>
         <p>{book.description}</p>
         <h2>{book.price}</h2>
-        <button className="grab-button">GRAB A COPY!</button>
+        <button className="grab-button" onClick={handleAddToCart}>GRAB A COPY!</button>
         <button className="try-button">TRY IT OUT FOR FREE!</button>
       </div>
     </div>
