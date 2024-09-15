@@ -162,3 +162,22 @@ p {
     background-color: #1f1f1f;
     transition: background-color 0.5s ease;
 }
+
+@media (max-width: 1024px) {
+    .cart-container {
+        flex-direction: column;
+    }
+    
+    .cart-items, .checkout-section {
+        width: 100%; 
+    }
+
+    .cart-items {
+        padding-right: 0; 
+        border-right: none;
+    }
+
+    .checkout-section {
+        padding-left: 0; /
+    }
+}
