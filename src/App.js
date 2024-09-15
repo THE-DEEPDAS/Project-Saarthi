@@ -9,6 +9,7 @@ import Cart from "./components/pages/Cart";
 import Allproducts from "./components/pages/AllProducts";
 import AuthPages from './components/pages/AuthPages';
 
+// just a comment
 const App = () => {
   const [cart, setCart] = useState([]);
 
