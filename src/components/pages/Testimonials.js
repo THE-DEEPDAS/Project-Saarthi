@@ -9,8 +9,8 @@ export default function Testimonials() {
   useEffect(() => {
     
     const initialTestimonials = [
-      { id: 1, name: "John Doe", company: "Tech Co", role: "Developer", comment: "Great product!", rating: 5 },
-      { id: 2, name: "Jane Smith", company: "Design Inc", role: "Designer", comment: "Very useful tool.", rating: 4 },
+      { id: 1, name: "Deep Das", company: "Tech Co", role: "Developer", comment: "Great product!", rating: 5 },
+      { id: 2, name: "Hitarth Shah", company: "Design Inc", role: "Designer", comment: "Very useful tool.", rating: 4 },
     ]
     setTestimonials(initialTestimonials)
   }, [])
