@@ -15,7 +15,7 @@ export default function AuthPages() {
         <>
           <div className="w-full lg:w-1/2 flex items-center justify-center">
             <div className="w-full max-w-md p-8">
-              <h1 className="text-4xl font-bold mb-6">Sign In</h1>
+              <h1 className="text-4xl font-bold mb-6 text-white">Sign In</h1>
               <div className="space-y-4 mb-4">
                 <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white bg-gray-700 hover:bg-gray-600 transition duration-150">
                   <img src={GoogleLogo} alt="Google logo" className="w-6 h-6" />
@@ -41,7 +41,7 @@ export default function AuthPages() {
                 <div className="text-sm text-right">
                   <a href="#" className="text-purple-500 hover:underline">FORGOT YOUR PASSWORD?</a>
                 </div>
-                <button className="w-full bg-white text-black py-2 rounded-md hover:bg-gray-200 transition duration-150">Sign In</button>
+                <button className="w-full bg-white text-black py-2 rounded-md hover:bg-purple-600 hover:text-white transition duration-150">Sign In</button>
               </form>
               <div className="mt-6 text-center">
                 <p>New to our services?</p>
@@ -69,7 +69,7 @@ export default function AuthPages() {
           <div className="hidden lg:block lg:w-1/2 bg-purple-600 rounded-r-[50px] relative overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center p-12">
               <div className="text-white text-center">
-                <h2 className="text-5xl font-bold mb-4 text-white">{'Good to see you here!'}</h2>
+                <h2 className="text-5xl font-bold mb-4 text-white">Good to see you here!</h2>
                 <p className="text-xl mb-8">Already know us?</p>
                 <button
                   onClick={togglePage}
@@ -82,7 +82,7 @@ export default function AuthPages() {
           </div>
           <div className="w-full lg:w-1/2 flex items-center justify-center">
             <div className="w-full max-w-md p-8">
-              <h1 className="text-4xl font-bold mb-6">Sign Up</h1>
+              <h1 className="text-4xl font-bold mb-6 text-white">Sign Up</h1>
               <div className="space-y-4 mb-4">
                 <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white bg-gray-700 hover:bg-gray-600 transition duration-150">
                   <img src={GoogleLogo} alt="Google logo" className="w-6 h-6" />
@@ -105,7 +105,7 @@ export default function AuthPages() {
                   placeholder="Password"
                   className="w-full px-3 py-2 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
                 />
-                <button className="w-full bg-white text-black py-2 rounded-md hover:bg-gray-200 transition duration-150">Sign Up</button>
+                <button className="w-full bg-white text-black py-2 rounded-md hover:bg-purple-600 hover:text-white transition duration-150">Sign Up</button>
               </form>
               <div className="mt-6 text-center">
                 <p>Already know us?</p>
