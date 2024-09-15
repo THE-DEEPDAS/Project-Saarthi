@@ -8,6 +8,7 @@ import ContactPage from "./components/pages/ContactPage";
 import Cart from "./components/pages/Cart";
 import Allproducts from "./components/pages/AllProducts";
 import AuthPages from './components/pages/AuthPages';
+import Testimonials from "./components/pages/Testimonials";
 
 // just a comment
 const App = () => {
@@ -45,6 +46,10 @@ const App = () => {
         <Route 
           path='/login' 
           element={<AuthPages />} 
+        />
+        <Route
+          path='/testimonials'
+          element={<Testimonials />} 
         />
       </Routes>
     </Router>

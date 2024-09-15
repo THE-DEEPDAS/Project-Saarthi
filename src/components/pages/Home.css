@@ -68,3 +68,22 @@ html, body {
     transform: scale(0.7);
     transition: ease-out 0.3s;
 }
+
+/* .footer > Link {
+    margin: 0 15px;
+    font-size: 1rem;
+    color: #161a25;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(146, 155, 181, 0.292);
+}
+.footer > Link:hover{
+    color: aliceblue;
+    transform: scale(1.2);
+    transition: ease-in-out 0.4s;
+}
+
+.footer > Link:active{
+    color: #161a25;
+    transform: scale(0.7);
+    transition: ease-out 0.3s;
+} */
