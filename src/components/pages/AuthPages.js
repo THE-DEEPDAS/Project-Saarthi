@@ -17,11 +17,11 @@ export default function AuthPages() {
             <div className="w-full max-w-md p-8">
               <h1 className="text-4xl font-bold mb-6">Sign In</h1>
               <div className="space-y-4 mb-4">
-                <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white hover:bg-gray-700 transition duration-150">
+                <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white bg-gray-700 hover:bg-gray-600 transition duration-150">
                   <img src={GoogleLogo} alt="Google logo" className="w-6 h-6" />
                   <span>Sign in with Google</span>
                 </button>
-                <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white hover:bg-gray-700 transition duration-150">
+                <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white bg-gray-700 hover:bg-gray-600 transition duration-150">
                   <img src={AppleLogo} alt="Apple logo" className="w-6 h-6" />
                   <span>Sign in with Apple</span>
                 </button>
@@ -52,7 +52,7 @@ export default function AuthPages() {
           <div className="hidden lg:block lg:w-1/2 bg-purple-600 rounded-l-[50px] relative overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center p-12">
               <div className="text-white text-center">
-                <h2 className="text-5xl font-bold mb-4">Welcome Back!</h2>
+                <h2 className="text-5xl font-bold mb-4 text-white">Welcome Back!</h2>
                 <p className="text-xl mb-8">New to our services?</p>
                 <button
                   onClick={togglePage}
@@ -69,7 +69,7 @@ export default function AuthPages() {
           <div className="hidden lg:block lg:w-1/2 bg-purple-600 rounded-r-[50px] relative overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center p-12">
               <div className="text-white text-center">
-                <h2 className="text-5xl font-bold mb-4">{'<SOMETHING TO WRITE HERE>'}</h2>
+                <h2 className="text-5xl font-bold mb-4 text-white">{'Good to see you here!'}</h2>
                 <p className="text-xl mb-8">Already know us?</p>
                 <button
                   onClick={togglePage}
@@ -84,12 +84,12 @@ export default function AuthPages() {
             <div className="w-full max-w-md p-8">
               <h1 className="text-4xl font-bold mb-6">Sign Up</h1>
               <div className="space-y-4 mb-4">
-                <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white hover:bg-gray-700 transition duration-150">
-                  <img src="/google-logo.svg" alt="Google logo" className="w-6 h-6" />
+                <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white bg-gray-700 hover:bg-gray-600 transition duration-150">
+                  <img src={GoogleLogo} alt="Google logo" className="w-6 h-6" />
                   <span>Sign up with Google</span>
                 </button>
-                <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white hover:bg-gray-700 transition duration-150">
-                  <img src="/apple-logo.svg" alt="Apple logo" className="w-6 h-6" />
+                <button className="w-full flex items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 text-white bg-gray-700 hover:bg-gray-600 transition duration-150">
+                  <img src={AppleLogo} alt="Apple logo" className="w-6 h-6" />
                   <span>Sign up with Apple</span>
                 </button>
               </div>
