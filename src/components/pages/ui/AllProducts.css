@@ -1,8 +1,11 @@
-/* Reset and base styles */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
@@ -10,6 +13,37 @@ body {
   line-height: 1.6;
   color: #fff;
   background-color: #000;
+  overflow-y: auto;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #333;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #a020f0;
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #bf7ce9;
+  transition: ease-in 0.3s;
+}
+
+body::-webkit-scrollbar-corner {
+  background-color: #000;
+}
+
+.book-catalog {
+  min-height: 100vh;
 }
 
 nav ul {
@@ -29,10 +63,9 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #a020f0; /* Purple */
+  color: #a020f0;
 }
 
-/* Main content styles */
 main {
   padding: 2rem;
 }
@@ -43,10 +76,9 @@ section {
 
 h2 {
   margin-bottom: 1rem;
-  color: #a020f0; /* Purple */
+  color: #a020f0;
 }
 
-/* Filter styles */
 .filters {
   margin-bottom: 1rem;
 }
@@ -62,17 +94,15 @@ h2 {
 }
 
 .filters button:hover {
-  background-color: #a020f0; /* Purple */
+  background-color: #a020f0;
 }
 
-/* Book grid styles */
 .book-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
 }
 
-/* Book styles */
 .book {
   background-color: #1a1a1a;
   border: 1px solid #333;
@@ -83,7 +113,7 @@ h2 {
 
 .book:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3); /* Purple shadow */
+  box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
 }
 
 .book-image {
@@ -100,21 +130,21 @@ h2 {
 
 .book-subtitle {
   font-size: 0.9rem;
-  color: #a020f0; /* Purple */
+  color: #a020f0;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .book-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
 
-/* Category Cards */
 .category-cards {
   display: flex;
   justify-content: space-around;
   margin: 2rem 0;
+  overflow-x: auto;
+  padding-bottom: 10px;
 }
 
 .card {
@@ -134,7 +164,7 @@ h2 {
 }
 
 .card:hover {
-  background-color: #a020f0; /* Purple */
+  background-color: #a020f0;
   transform: translateY(-5px);
 }
 
@@ -152,7 +182,6 @@ h2 {
   line-height: 1.4;
 }
 
-/* Responsive category cards */
 @media (max-width: 768px) {
   .category-cards {
     flex-direction: column;
