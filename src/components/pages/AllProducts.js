@@ -15,8 +15,9 @@ function AllProducts() {
   const navigate = useNavigate();
 
   const filterBooks = () => {
-    return books.filter(book =>
-      selectedCategory === 'All' || book.category === selectedCategory
+    return books.filter(book => 
+      selectedCategory === 'All' || 
+      (book.category === selectedCategory || book.subtitle === selectedCategory)
     );
   };
 
@@ -26,20 +27,27 @@ function AllProducts() {
 
   return (
     <div className="book-catalog">
-
       {/* Category Selection Cards */}
       <div className="category-cards">
         <div className="card" onClick={() => setSelectedCategory('All')}>
-        <h3>All Books</h3>
-        <p>Explore top-notch notes curated by expert educators, perfect for both JEE and NEET aspirants!</p>
+          <h3>All Books</h3>
+          <p>Explore top-notch notes curated by expert educators, perfect for both JEE and NEET aspirants!</p>
         </div>
         <div className="card" onClick={() => setSelectedCategory('JEE')}>
-        <h3>JEE Books</h3>
-        <p>Crack JEE with this handpicked collection of the best study materials, crafted for success!</p>
+          <h3>JEE Books</h3>
+          <p>Crack JEE with this handpicked collection of the best study materials, crafted for success!</p>
         </div>
         <div className="card" onClick={() => setSelectedCategory('NEET')}>
-        <h3>NEET Books</h3>
-        <p>Master NEET with these essential notes, tailored to help you ace the exam with confidence!</p>
+          <h3>NEET Books</h3>
+          <p>Master NEET with these essential notes, tailored to help you ace the exam with confidence!</p>
+        </div>
+        <div className="card" onClick={() => setSelectedCategory('Class 11')}>
+          <h3>Class 11 Books</h3>
+          <p>Get a strong foundation with Class 11 books, essential for JEE and NEET preparation!</p>
+        </div>
+        <div className="card" onClick={() => setSelectedCategory('Class 12')}>
+          <h3>Class 12 Books</h3>
+          <p>Boost your preparation with Class 12 books, crucial for acing JEE and NEET exams!</p>
         </div>
       </div>
 
