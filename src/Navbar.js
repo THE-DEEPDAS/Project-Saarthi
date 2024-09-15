@@ -10,6 +10,7 @@ const Navbar = () => {
         <img id="logo" src={Logo} alt="Logo" />
       </Link>
       <div className="navbar-right">
+        <Link to="/" className='navbar-link' id='contact'>Home</Link>
         <Link to="/allproducts" className="navbar-link" id='product'>Products</Link>
         <Link to="/contact" className="navbar-link" id='contact'>Contact</Link>
         <Link to="/cart" className="cart-link" id='cart'>🛒</Link>
