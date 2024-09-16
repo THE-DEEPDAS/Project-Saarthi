@@ -45,7 +45,7 @@ export default function AuthPages() {
               </form>
               <div className="mt-6 text-center">
                 <p>New to our services?</p>
-                <button onClick={togglePage} className="text-purple-500 hover:underline">Sign Up</button>
+                {/* <button onClick={togglePage} className="text-purple-500 hover:underline">Sign Up</button> */}
               </div>
             </div>
           </div>
@@ -54,6 +54,7 @@ export default function AuthPages() {
               <div className="text-white text-center">
                 <h2 className="text-5xl font-bold mb-4 text-white">Welcome Back!</h2>
                 <p className="text-xl mb-8">New to our services?</p>
+                {/* this is the main button , don't remove this  */}
                 <button
                   onClick={togglePage}
                   className="bg-transparent border-2 border-white text-white px-6 py-2 rounded-md hover:bg-white hover:text-purple-600 transition-colors"
@@ -109,7 +110,7 @@ export default function AuthPages() {
               </form>
               <div className="mt-6 text-center">
                 <p>Already know us?</p>
-                <button onClick={togglePage} className="text-purple-500 hover:underline">Sign In</button>
+                {/* <button onClick={togglePage} className="text-purple-500 hover:underline">Sign In</button> */}
               </div>
             </div>
           </div>
