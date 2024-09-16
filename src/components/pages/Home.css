@@ -1,20 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 html, body {
+    overflow-y: hidden;
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .background {
-    background-image: url("./images/back_image.jpg");
+    background-image: url("./images/final_bg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    height: 86vh;
     width: 100vw;
+    overflow: hidden;
     position: relative;
 }
 
@@ -31,7 +33,7 @@ html, body {
     width: 80%;
     text-shadow: 3px 3px 5px rgba(137, 118, 135, 0.721);
 }
-/*#ad9875*/
+
 .footer {
     display: flex;
     justify-content: center;
@@ -45,14 +47,14 @@ html, body {
     color: white;
     padding: 5px;
     border-radius: 30px;
-    width: 60%;
-    max-width: 80%vw;
-    box-sizing: border8-box;
+    width: 70%;
+    max-width: 80vw;
+    box-sizing: border-box;
 }
 
 .footer > div {
     margin: 0 15px;
-    font-size: 1rem;
+    font-size: clamp(0.2rem,3vw,1.2rem);
     color: #161a25;
     font-weight: 600;
     text-shadow: 1px 1px 3px rgba(146, 155, 181, 0.292);
@@ -68,22 +70,3 @@ html, body {
     transform: scale(0.7);
     transition: ease-out 0.3s;
 }
-
-/* .footer > Link {
-    margin: 0 15px;
-    font-size: 1rem;
-    color: #161a25;
-    font-weight: 600;
-    text-shadow: 1px 1px 3px rgba(146, 155, 181, 0.292);
-}
-.footer > Link:hover{
-    color: aliceblue;
-    transform: scale(1.2);
-    transition: ease-in-out 0.4s;
-}
-
-.footer > Link:active{
-    color: #161a25;
-    transform: scale(0.7);
-    transition: ease-out 0.3s;
-} */
