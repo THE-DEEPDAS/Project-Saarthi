@@ -5,7 +5,7 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
-    position: fixed;
+    overflow: hidden;
 }
 
 .background {
@@ -16,7 +16,7 @@ html, body {
     height: 86vh;
     width: 100vw;
     overflow: hidden;
-    position: relative;
+    position: fixed;
 }
 
 .maintext {
