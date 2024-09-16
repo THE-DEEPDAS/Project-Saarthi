@@ -44,7 +44,7 @@ export default function AuthPages() {
                 <button className="w-full bg-white text-black py-2 rounded-md hover:bg-purple-600 hover:text-white transition duration-150">Sign In</button>
               </form>
               <div className="mt-6 text-center">
-                <p>New to our services?</p>
+                {/* <p>New to our services?</p> */}
                 {/* <button onClick={togglePage} className="text-purple-500 hover:underline">Sign Up</button> */}
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function AuthPages() {
                 <button className="w-full bg-white text-black py-2 rounded-md hover:bg-purple-600 hover:text-white transition duration-150">Sign Up</button>
               </form>
               <div className="mt-6 text-center">
-                <p>Already know us?</p>
+                {/* <p>Already know us?</p> */}
                 {/* <button onClick={togglePage} className="text-purple-500 hover:underline">Sign In</button> */}
               </div>
             </div>

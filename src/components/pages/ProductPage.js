@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import './ui/ProductPage.css';
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import "./ui/ProductPage.css";
 
 const ProductPage = ({ addToCart }) => {
   const location = useLocation();
@@ -33,7 +33,12 @@ const ProductPage = ({ addToCart }) => {
 
   return (
     <div className="container">
-      {showMessage && <div className="popup-message">Item added to cart!</div>}
+      {showMessage && (
+        <div className={`popup-message ${showMessage ? "show" : "hide"}`}>
+          Item added to cart!
+        </div>
+      )}
+
       {/* Image Carousel */}
       <div className="image-carousel">
         <div
@@ -49,8 +54,14 @@ const ProductPage = ({ addToCart }) => {
             />
           ))}
         </div>
-        <button className="prev" onClick={handlePrev}>❮</button>
-        <button className="next" onClick={handleNext}>❯</button>
+        <div className="buttons-container">
+          <button className="prev" onClick={handlePrev}>
+            ❮
+          </button>
+          <button className="next" onClick={handleNext}>
+            ❯
+          </button>
+        </div>
       </div>
 
       {/* Product Details */}
@@ -58,7 +69,9 @@ const ProductPage = ({ addToCart }) => {
         <h1>{book.title}</h1>
         <p>{book.description}</p>
         <h2>{book.price}</h2>
-        <button className="grab-button" onClick={handleAddToCart}>GRAB A COPY!</button>
+        <button className="grab-button" onClick={handleAddToCart}>
+          GRAB A COPY!
+        </button>
         <button className="try-button">TRY IT OUT FOR FREE!</button>
       </div>
     </div>
