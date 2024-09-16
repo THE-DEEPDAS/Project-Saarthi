@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 html, body {
-    overflow-y: hidden;
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
+    position: fixed;
 }
 
 .background {
-    background-image: url("./images/final_bg.jpg");
+    background-image: url("C:\Users\Manan\OneDrive\Desktop\alumniproject\Project-Saarthi-master\src\Bg\6266724.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,31 +41,52 @@ html, body {
     bottom: 2%;
     left: 50%;
     transform: translateX(-50%);
-    background-color:#827359 ;
-    
+    background-color: #827359;
     color: white;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     border-radius: 30px;
     width: 70%;
     max-width: 80vw;
     box-sizing: border-box;
+    flex-wrap: wrap;
 }
 
 .footer > div {
     margin: 0 15px;
-    font-size: clamp(0.2rem,3vw,1.2rem);
+    font-size: clamp(0.2rem, 3vw, 1.15rem);
     color: #161a25;
     font-weight: 600;
     text-shadow: 1px 1px 3px rgba(146, 155, 181, 0.292);
 }
-.footer > div:hover{
+
+.footer > div:hover {
     color: aliceblue;
     transform: scale(1.2);
     transition: ease-in-out 0.4s;
 }
 
-.footer > div:active{
+.footer > div:active {
     color: #161a25;
     transform: scale(0.7);
     transition: ease-out 0.3s;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        flex-direction: column;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .footer > div {
+        margin: 5px 0;
+    }
 }
