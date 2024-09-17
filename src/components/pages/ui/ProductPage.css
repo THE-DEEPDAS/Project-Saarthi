@@ -143,11 +143,11 @@ body {
     }
 
     .product-details h1, .product-details p, .product-details h2 {
-        font-size: 1rem; /* Reduce font size for smaller screens */
+        font-size: 1rem; 
     }
 
     .grab-button, .try-button {
-        padding: 10px 20px; /* Reduce button size for smaller screens */
+        padding: 10px 20px; 
         font-size: 0.9rem;
     }
 
@@ -159,7 +159,7 @@ body {
 
 .popup-message {
     position: fixed;
-    top: -50px; /* Initially hidden above the top of the page */
+    top: -50px; 
     left: 50%;
     transform: translateX(-50%);
     background-color: black;
@@ -169,35 +169,34 @@ body {
     font-size: 18px;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000; /* Ensures the popup appears above all other elements */
-    opacity: 0; /* Initially hidden */
+    z-index: 1000; 
+    opacity: 0; 
     transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
   }
   
   .popup-message.show {
-    top: 20px; /* Moves into view */
-    opacity: 1; /* Fade in */
+    top: 20px; 
+    opacity: 1; 
   }
   
   .popup-message.hide {
-    top: -50px; /* Moves out of view */
-    opacity: 0; /* Fade out */
+    top: -50px; 
+    opacity: 0; 
   }
   
-  /* Glowing effect on the text */
   @keyframes textGlow {
     0% {
       text-shadow: 0 0 5px purple, 0 0 10px purple, 0 0 15px purple, 0 0 20px purple;
     }
     50% {
-      text-shadow: 0 0 10px purple, 0 0 15px purple, 0 0 25px purple, 0 0 30px purple;
+      text-shadow: 0 0 10px rgb(36, 0, 128), 0 0 15px rgb(36, 0, 128), 0 0 25px rgb(36, 0, 128), 0 0 30px rgb(36, 0, 128);
     }
     100% {
-      text-shadow: 0 0 5px purple, 0 0 10px purple, 0 0 15px purple, 0 0 20px purple;
+      text-shadow: 0 0 5px rgb(2, 0, 128), 0 0 10px rgb(2, 0, 128), 0 0 15px rgb(2, 0, 128), 0 0 20px rgb(2, 0, 128);
     }
   }
   
   .popup-message {
-    animation: textGlow 1.5s ease-in-out infinite; /* Glowing text effect */
+    animation: textGlow 1.5s ease-in-out infinite; 
   }
   
