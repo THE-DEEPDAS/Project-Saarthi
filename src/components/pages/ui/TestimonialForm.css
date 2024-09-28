@@ -16,19 +16,19 @@
 }
 
 .testimonial-form {
-  background-color: #ffffff; /* Changed to white for uniformity */
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
-  max-width: 80%; /* Set to cover around 70-80% horizontally */
-  margin: 2rem auto; /* Centered with space on left and right */
+  max-width: 80%;
+  margin: 2rem auto;
   animation: fadeIn 0.5s ease-out, glow 3s infinite;
 }
 
 .testimonial-form h3 {
   margin-top: 0;
   margin-bottom: 1.5rem;
-  color: #3b82f6; /* Blue shade for the heading */
+  color: #3b82f6;
   text-align: center;
   font-size: 1.8rem;
   text-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
@@ -43,24 +43,24 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #4a4a4a; /* Dark gray for labels */
+  color: #4a4a4a;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .form-group:hover label {
-  color: #9b59b6; /* Color on hover */
+  color: #9b59b6;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 0.75rem;
-  background-color: #f7f7f7; /* Light gray background */
-  border: 1px solid #d1d1d1; /* Light border */
+  background-color: #f7f7f7;
+  border: 1px solid #d1d1d1;
   border-radius: 8px;
   font-size: 1rem;
-  color: #333333; /* Dark text color */
+  color: #333333;
   transition: all 0.3s ease;
 }
 
@@ -128,24 +128,24 @@
 }
 
 .form-actions button[type="submit"] {
-  background-color: #8e44ad; /* Submit button color */
+  background-color: #8e44ad;
   color: white;
 }
 
 .form-actions button[type="submit"]:hover {
-  background-color: #9b59b6; /* Submit button hover color */
+  background-color: #9b59b6;
   transform: translateY(-2px);
   box-shadow: 0 0 25px rgba(138, 43, 226, 0.8);
   animation: pulse 1s infinite;
 }
 
 .form-actions button[type="button"] {
-  background-color: #2838c7; /* Button color */
-  color: #e6e6e6; /* Button text color */
+  background-color: #2838c7;
+  color: #e6e6e6;
 }
 
 .form-actions button[type="button"]:hover {
-  background-color: #2f1dd5; /* Button hover color */
+  background-color: #2f1dd5;
   transform: translateY(-2px);
   box-shadow: 0 0 25px rgba(138, 43, 226, 0.8);
 }
@@ -157,15 +157,15 @@
 
 @media (max-width: 768px) {
   .testimonial-form {
-      padding: 1.5rem; /* Adjust padding for smaller screens */
+      padding: 1.5rem;
   }
 
   .form-actions {
-      flex-direction: column; /* Stack buttons on smaller screens */
+      flex-direction: column;
       gap: 1rem;
   }
 
   .form-actions button {
-      width: 100%; /* Full width buttons on small screens */
+      width: 100%;
   }
 }
