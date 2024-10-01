@@ -25,17 +25,26 @@ const ProductPage = ({ addToCart }) => {
     );
   };
 
-  const handleAddToCart = () => {
-    addToCart(book);
+  const handleEBookPurchase = () => {
+    addToCart({ ...book, type: 'E-Book' });
     setShowMessage(true);
-    setTimeout(() => setShowMessage(false), 2000); // Hide message after 2 seconds
+    setTimeout(() => setShowMessage(false), 2000);
+  };
+
+  const handlePhysicalCopyPurchase = () => {
+    navigate('/address-form', { state: { book: { ...book, type: 'Physical Copy' } } });
+  };
+
+  const handleTryForFree = () => {
+    // Implement the "Try it out for free" functionality here
+    console.log("Try it out for free clicked");
   };
 
   return (
     <div className="container">
       {showMessage && (
         <div className={`popup-message ${showMessage ? "show" : "hide"}`}>
-          Item added to cart!
+          E-Book added to cart!
         </div>
       )}
 
@@ -69,10 +78,17 @@ const ProductPage = ({ addToCart }) => {
         <h1>{book.title}</h1>
         <p>{book.description}</p>
         <h2>{book.price}</h2>
-        <button className="grab-button" onClick={handleAddToCart}>
-          GRAB A COPY!
-        </button>
-        <button className="try-button">TRY IT OUT FOR FREE!</button>
+        <div className="button-container">
+          <button className="grab-button" onClick={handleEBookPurchase}>
+            E-BOOK
+          </button>
+          <button className="grab-button" onClick={handlePhysicalCopyPurchase}>
+            PHYSICAL COPY
+          </button>
+          <button className="try-button" onClick={handleTryForFree}>
+            Try it out for free
+          </button>
+        </div>
       </div>
     </div>
   );

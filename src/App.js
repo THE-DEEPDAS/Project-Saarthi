@@ -9,6 +9,7 @@ import Cart from "./components/pages/Cart";
 import Allproducts from "./components/pages/AllProducts";
 import AuthPages from './components/pages/AuthPages';
 import Testimonials from "./components/pages/Testimonials";
+import AddressForm from './components/pages/address_form';
 
 // just a comment
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
           path='/testimonials'
           element={<Testimonials />} 
         />
+        <Route path="/address-form" element={<AddressForm addToCart={addToCart} />} />
       </Routes>
     </Router>
   );
