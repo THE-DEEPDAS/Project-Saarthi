@@ -92,3 +92,40 @@
         padding: 15px;
     }
 }
+
+/* Add these styles to your existing CSS */
+.message {
+    position: fixed;
+    top: -50px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #FFD700;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: top 0.3s ease, opacity 0.3s ease;
+}
+
+.message.show {
+    top: 20px;
+    opacity: 1;
+}
+
+.message.hide {
+    top: -50px;
+    opacity: 0;
+}
+
+.success {
+    background-color: #333;
+    color: #FFD700;
+}
+
+.error {
+    background-color: #333;
+    color: #FF6347;
+}

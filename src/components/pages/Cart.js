@@ -11,7 +11,8 @@ const Cart = ({ cart }) => {
           <div className="cart-item-details">
             <h3>{item.title}</h3>
             <p>Price: {item.price}</p>
-            <p>Type: {item.type}</p>
+            {item.type && <p>Type: {item.type}</p>}
+            {item.status && <p>Status: {item.status}</p>}
           </div>
         </div>
       ))}

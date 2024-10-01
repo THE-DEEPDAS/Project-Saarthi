@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
+    "email-js": "^2.0.3",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^11.9.0",
     "lucide-react": "^0.441.0",
