@@ -41,7 +41,7 @@
 
 /* PAGE 1*/
 .page1 {
-    background-image: url("C:\Users\Manan\OneDrive\Desktop\alumniproject\Project-Saarthi-master\src\components\pages\images\Ready to work with us.png");
+    background-image: url('../images/Ready to work with us.png');
     background-size: cover;
     background-position: center;
     flex-direction: column;  

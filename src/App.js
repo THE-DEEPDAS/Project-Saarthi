@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./globals.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
+import About from "./components/pages/About";
 import Home from "./components/pages/Home";
 import ProductPage from "./components/pages/ProductPage";
 import ContactPage from "./components/pages/ContactPage";
@@ -51,6 +52,10 @@ const App = () => {
         <Route
           path='/testimonials'
           element={<Testimonials />} 
+        />
+        <Route
+          path='/about'
+          element={<About />} 
         />
         <Route path="/address-form" element={<AddressForm addToCart={addToCart} />} />
       </Routes>
