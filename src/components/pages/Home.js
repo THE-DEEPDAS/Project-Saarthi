@@ -8,7 +8,9 @@ const Home = () => {
         Unpacking The future <br /> of Education
       </div>
       <div className="footer">
-        <Link to="/About">About</Link>
+        <div className="about">
+          <Link to="/About">About</Link>
+        </div>
 
         <div className="testimonies">
           <Link to="/testimonials">Testimonials</Link>
