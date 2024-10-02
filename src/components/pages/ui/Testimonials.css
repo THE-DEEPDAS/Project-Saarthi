@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 .testimonials-container {
-  background-color: #1e3a8a;
+  background-color: #06002e;
   padding: 4rem 1rem;
   position: relative;
   overflow: hidden; 
@@ -7,8 +8,9 @@
 
 .testimonials-container h2 {
   color: #ffffff;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: clamp(1.5rem,2.75vw,3rem);
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -16,12 +18,13 @@
 .testimonials-grid {
   display: flex;
   transition: transform 0.5s ease;
+  gap: 15px;
 }
 
 .testimonial-card {
   flex: 0 0 33.33%; 
   background-color: #ffffff;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   opacity: 1; 
