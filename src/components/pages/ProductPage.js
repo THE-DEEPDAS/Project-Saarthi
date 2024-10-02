@@ -8,6 +8,10 @@ const ProductPage = ({ addToCart }) => {
   const { book } = location.state || {};
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
+  const [selectedTypes, setSelectedTypes] = useState({
+    eBook: false,
+    physicalCopy: false
+  });
 
   if (!book) {
     return <div>No book selected</div>;
@@ -25,14 +29,45 @@ const ProductPage = ({ addToCart }) => {
     );
   };
 
-  const handleEBookPurchase = () => {
-    addToCart({ ...book, type: 'E-Book' });
-    setShowMessage(true);
-    setTimeout(() => setShowMessage(false), 2000);
+  const handleTypeSelect = (type) => {
+    setSelectedTypes(prev => ({
+      ...prev,
+      [type]: !prev[type]
+    }));
   };
 
-  const handlePhysicalCopyPurchase = () => {
-    navigate('/address-form', { state: { book: { ...book, type: 'Physical Copy' } } });
+  const calculatePrice = () => {
+    let total = 0;
+    if (selectedTypes.eBook) total += parseFloat(book.eBookPrice.replace('₹', ''));
+    if (selectedTypes.physicalCopy) total += parseFloat(book.physicalPrice.replace('₹', ''));
+    return total === 0 ? book.eBookPrice : `₹${total}`;
+  };
+
+  const handlePurchase = () => {
+    if (!selectedTypes.eBook && !selectedTypes.physicalCopy) {
+      setShowMessage(true);
+      setTimeout(() => setShowMessage(false), 2000);
+      return;
+    }
+
+    if (selectedTypes.physicalCopy) {
+      navigate('/address-form', { 
+        state: { 
+          book: { 
+            ...book, 
+            type: selectedTypes.eBook ? 'Both' : 'Physical Copy',
+            price: calculatePrice()
+          } 
+        } 
+      });
+    } else {
+      addToCart({ ...book, type: 'E-Book', price: book.eBookPrice });
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+        navigate('/cart');
+      }, 2000);
+    }
   };
 
   const handleTryForFree = () => {
@@ -44,7 +79,7 @@ const ProductPage = ({ addToCart }) => {
     <div className="container">
       {showMessage && (
         <div className={`popup-message ${showMessage ? "show" : "hide"}`}>
-          E-Book added to cart!
+          {selectedTypes.eBook || selectedTypes.physicalCopy ? "E-Book added to cart!" : "Please select a book type"}
         </div>
       )}
 
@@ -77,13 +112,26 @@ const ProductPage = ({ addToCart }) => {
       <div className="product-details">
         <h1>{book.title}</h1>
         <p>{book.description}</p>
-        <h2>{book.price}</h2>
-        <div className="button-container">
-          <button className="grab-button" onClick={handleEBookPurchase}>
+        <h2>{calculatePrice()}</h2>
+        <div className="type-selection">
+          <button 
+            className={`type-button ${selectedTypes.eBook ? 'selected' : ''}`}
+            onClick={() => handleTypeSelect('eBook')}
+          >
+            <span className="dot"></span>
             E-BOOK
           </button>
-          <button className="grab-button" onClick={handlePhysicalCopyPurchase}>
+          <button 
+            className={`type-button ${selectedTypes.physicalCopy ? 'selected' : ''}`}
+            onClick={() => handleTypeSelect('physicalCopy')}
+          >
+            <span className="dot"></span>
             PHYSICAL COPY
+          </button>
+        </div>
+        <div className="button-container">
+          <button className="grab-button" onClick={handlePurchase}>
+            ADD TO CART
           </button>
           <button className="try-button" onClick={handleTryForFree}>
             Try it out for free

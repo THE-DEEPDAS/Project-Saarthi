@@ -211,3 +211,12 @@ h2 {
     max-width: 300px;
   }
 }
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+  background-color: #ffeeee;
+}

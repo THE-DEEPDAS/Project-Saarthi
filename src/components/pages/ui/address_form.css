@@ -3,11 +3,16 @@
     margin: 0 auto;
     padding: 20px;
     background-color: black;
-    color: white;
+    color: #d4af37;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-in-out;
 }
+
+.address-form-container h2{
+    color: #9113c6;
+  }
+  
 
 @keyframes fadeIn {
     from {
@@ -33,7 +38,7 @@
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #06002e;
+    color: #d4af37;
     font-weight: bold;
 }
 
@@ -43,8 +48,8 @@
 .form-group textarea {
     width: 100%;
     padding: 10px;
-    background-color: none;
-    border: 1px solid #06002e;
+    background-color: #1c1c1c;
+    border: 1px solid #4b0082;
     border-radius: 5px;
     color: white;
     transition: border-color 0.3s ease;

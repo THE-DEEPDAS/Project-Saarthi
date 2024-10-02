@@ -74,7 +74,7 @@ const AddressForm = ({ addToCart }) => {
 
   return (
     <div className="address-form-container">
-      <h2>Order Details for Physical Copy</h2>
+      <h2 style={{ color: 'gold' }}>Order Details for Physical Copy</h2>
       {message && (
         <div className={`message ${showMessage ? 'show' : 'hide'} ${message.includes('Error') ? 'error' : 'success'}`}>
           {message}

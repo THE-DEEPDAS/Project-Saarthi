@@ -2,11 +2,38 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ui/AllProducts.css';
 
-// Updated sample data
+// Updated sample data without displaying prices
 const books = [
-  { id: 1, title: 'Class 12 Board Physics', subtitle: 'Class 12', category: 'Class 12', price: '₹599', images: ['/placeholder.svg?height=400&width=300'], description: 'Comprehensive guide for Class 12 Board Physics' },
-  { id: 2, title: 'Class 12 Board Chemistry', subtitle: 'Class 12', category: 'Class 12', price: '₹649', images: ['/placeholder.svg?height=400&width=300'], description: 'In-depth study material for Class 12 Board Chemistry' },
-  { id: 3, title: 'Class 12 Board Biology', subtitle: 'Class 12', category: 'Class 12', price: '₹699', images: ['/placeholder.svg?height=400&width=300'], description: 'Essential Biology concepts for Class 12 Board' },
+  { 
+    id: 1, 
+    title: 'Class 12 Board Physics', 
+    subtitle: 'Class 12', 
+    category: 'Class 12', 
+    eBookPrice: '₹399', 
+    physicalPrice: '₹599', 
+    images: ['/placeholder.svg?height=400&width=300'], 
+    description: 'Comprehensive guide for Class 12 Board Physics' 
+  },
+  { 
+    id: 2, 
+    title: 'Class 12 Board Chemistry', 
+    subtitle: 'Class 12', 
+    category: 'Class 12', 
+    eBookPrice: '₹449', 
+    physicalPrice: '₹649', 
+    images: ['/placeholder.svg?height=400&width=300'], 
+    description: 'In-depth study material for Class 12 Board Chemistry' 
+  },
+  { 
+    id: 3, 
+    title: 'Class 12 Board Biology', 
+    subtitle: 'Class 12', 
+    category: 'Class 12', 
+    eBookPrice: '₹499', 
+    physicalPrice: '₹699', 
+    images: ['/placeholder.svg?height=400&width=300'], 
+    description: 'Essential Biology concepts for Class 12 Board' 
+  },
 ];
 
 function AllProducts() {
