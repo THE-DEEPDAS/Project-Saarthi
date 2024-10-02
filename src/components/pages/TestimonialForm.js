@@ -35,7 +35,7 @@ export default function TestimonialForm({ onSubmit, onCancel }) {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="company">Company:</label>
+        <label htmlFor="company">Company/Institution:</label>
         <input
           type="text"
           id="company"
@@ -46,7 +46,7 @@ export default function TestimonialForm({ onSubmit, onCancel }) {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="role">Role:</label>
+        <label htmlFor="role">Title/Role:</label>
         <input
           type="text"
           id="role"
