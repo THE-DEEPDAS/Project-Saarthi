@@ -159,7 +159,7 @@ export default function ContactPage() {
             <div className="contact-details">
               <div className="contact-item">
                 <MapPinIcon size={24} />
-                <span>Aakash institute, Vadodara(Temporary)</span>
+                <span>Great Notes, KPA-3,Sector 133, Noida-201304. </span>
               </div>
               <div className="contact-item">
                 <PhoneIcon size={24} />
@@ -179,7 +179,7 @@ export default function ContactPage() {
                 <InstagramIcon size={24} />
               </a>
               <TwitterIcon size={24} />
-              <LinkedinIcon size={24} />
+              {/* <LinkedinIcon size={24} /> */}
             </div>
           </div>
         </div>
