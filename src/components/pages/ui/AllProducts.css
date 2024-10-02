@@ -148,6 +148,7 @@ h2 {
 }
 
 .card {
+  position: relative;
   background-color: #333;
   color: #fff;
   padding: 1.5rem;
@@ -161,6 +162,7 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -168,18 +170,33 @@ h2 {
   transform: translateY(-5px);
 }
 
-.card h3 {
-  margin: 0 0 10px;
-  font-size: 1.4rem;
+.card.coming-soon {
+  cursor: default;
+}
+
+.card.coming-soon:hover {
+  background-color: #333;
+  transform: none;
+}
+
+.coming-soon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
 }
 
-.card p {
-  font-size: 1rem;
-  color: #ddd;
-  margin: 0;
-  line-height: 1.4;
+.card.coming-soon h3,
+.card.coming-soon p {
+  filter: blur(3px);
 }
 
 @media (max-width: 768px) {
