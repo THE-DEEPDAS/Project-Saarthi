@@ -99,7 +99,7 @@ export default function ContactPage() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="phone">Phone (optional)</label>
+                <label htmlFor="phone">Phone</label>
                 <Input
                   id="phone"
                   className="contact-input"
