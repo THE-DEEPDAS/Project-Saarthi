@@ -13,24 +13,19 @@ import {
   TwitterIcon,
   LinkedinIcon,
 } from "lucide-react";
-import emailjs from "emailjs-com"; // Import EmailJS
+import emailjs from "emailjs-com";
 
 export default function ContactPage() {
-  const [hoverStates, setHoverStates] = useState({
-    name: false,
-    email: false,
-    message: false,
-  });
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
+    orderNumber: "",
+    subject: "",
     message: "",
   });
 
-  const handleHover = (field, isHovering) => {
-    setHoverStates((prev) => ({ ...prev, [field]: isHovering }));
-  };
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,32 +34,30 @@ export default function ContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Sending the main email
     emailjs
       .send(
-        "your_service_id", // Replace with your service ID
-        "your_template_id", // Replace with your template ID for the message
+        "service_1dvn70q", 
+        "template_rz371oi", 
         {
-          from_name: formData.name, // Sender's name
-          reply_to: formData.email, // Sender's email for reply
-          message: formData.message, // Message content
+          from_name: formData.name,
+          reply_to: formData.email,
+          phone: formData.phone,
+          order_number: formData.orderNumber,
+          subject: formData.subject,
+          message: formData.message,
         },
-        "your_public_key" // Replace with your EmailJS public key
+        "Il4-DiKyN8X8ugRKf" 
       )
       .then(() => {
-        alert("Message sent successfully!");
-
-        // Sending the acknowledgment email
-        emailjs.send(
-          "your_service_id", // Same service ID
-          "your_autoreply_template_id", // Replace with your template ID for the acknowledgment
-          {
-            to_email: formData.email, // Recipient email (the sender's email)
-            from_name: "Deep", // Your name for acknowledgment
-            reply_to: "your_email@example.com", // Your reply email
-          },
-          "your_public_key" // Same public key
-        );
+        setShowPopup(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          orderNumber: "",
+          subject: "",
+          message: "",
+        });
       })
       .catch(() => {
         alert("Failed to send message.");
@@ -78,39 +71,80 @@ export default function ContactPage() {
           {/* Left Section */}
           <div className="contact-form">
             <h1>Contact Us</h1>
-            <p>We're here to help you!</p>
+            <p>We're here to help with your book-related inquiries!</p>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
+                <label htmlFor="name">Name</label>
                 <Input
-                  placeholder="Name"
+                  id="name"
+                  className="contact-input"
+                  type="text"
+                  placeholder="Enter your name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  onMouseEnter={() => handleHover("name", true)}
-                  onMouseLeave={() => handleHover("name", false)}
                   required
                 />
               </div>
               <div className="form-group">
+                <label htmlFor="email">Email</label>
                 <Input
+                  id="email"
+                  className="contact-input"
                   type="email"
-                  placeholder="Email"
+                  placeholder="Enter your email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  onMouseEnter={() => handleHover("email", true)}
-                  onMouseLeave={() => handleHover("email", false)}
                   required
                 />
               </div>
               <div className="form-group">
+                <label htmlFor="phone">Phone (optional)</label>
+                <Input
+                  id="phone"
+                  className="contact-input"
+                  type="tel"
+                  placeholder="Enter your phone number"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="orderNumber">Order Number</label>
+                <Input
+                  id="orderNumber"
+                  className="contact-input"
+                  type="text"
+                  placeholder="Enter order number (if applicable)"
+                  name="orderNumber"
+                  value={formData.orderNumber}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="subject">Subject</label>
+                <Input
+                  id="subject"
+                  className="contact-input"
+                  type="text"
+                  placeholder="Enter subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
                 <Textarea
-                  placeholder="Message"
+                  id="message"
+                  className="contact-input"
+                  placeholder="Enter your message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  onMouseEnter={() => handleHover("message", true)}
-                  onMouseLeave={() => handleHover("message", false)}
                   required
                 />
               </div>
@@ -120,20 +154,20 @@ export default function ContactPage() {
 
           {/* Right Section */}
           <div className="contact-info">
-            <h2>Reach Out to Us!</h2>
-            <p>Got a question? We're here to answer!</p>
+            <h2>Get in Touch with Our Bookstore!</h2>
+            <p>Have questions about books, orders, or our services? We're here to assist!</p>
             <div className="contact-details">
               <div className="contact-item">
                 <MapPinIcon size={24} />
-                <span>123 Main St, Anytown, USA 12345</span>
+                <span>Aakash institute, Vadodara(Temporary)</span>
               </div>
               <div className="contact-item">
                 <PhoneIcon size={24} />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 6397 969 595</span>
               </div>
               <div className="contact-item">
                 <MailIcon size={24} />
-                <span>contact@example.com</span>
+                <span>teamgreatnotes@gmail.com</span>
               </div>
             </div>
             <div className="social-icons">
@@ -151,18 +185,16 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Footer */}
-      {/* <footer>
-        <div className="container">
-          <div className="footer-content">
-            <p>&copy; 2023 Your Company. All rights reserved.</p>
-            <div>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-            </div>
+      {showPopup && (
+        <>
+          <div className="popup-overlay" onClick={() => setShowPopup(false)}></div>
+          <div className="popup">
+            <button className="close-button" onClick={() => setShowPopup(false)}>&times;</button>
+            <h2>Message Sent</h2>
+            <p>Your message has been sent successfully. We'll get back to you soon!</p>
           </div>
-        </div>
-      </footer> */}
+        </>
+      )}
     </div>
   );
 }

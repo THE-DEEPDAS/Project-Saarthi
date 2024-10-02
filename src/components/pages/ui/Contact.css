@@ -87,7 +87,17 @@
   }
   
   .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
     position: relative;
+  }
+  
+  .form-group label {
+    font-size: 0.875rem;
+    color: #9CA3AF;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
   }
   
   input,
@@ -118,10 +128,14 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    right: 0;
     height: 2px;
-    width: 0;
-    background-color: #8B5CF6;
-    transition: width 0.3s ease;
+    background-color: #374151;
+    transition: all 0.3s ease;
+  }
+  
+  .form-group:focus-within::after {
+    background-color: gold;
   }
   
   .form-group:hover::after {
@@ -177,7 +191,6 @@
     transform: scale(1.1);
   }
   
-  
   /* Responsive adjustments */
   @media (max-width: 1023px) {
     .contact-form,
@@ -209,4 +222,122 @@
 
   .contact-form h1{
     color: white;
+  }
+
+  .contact-form .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #1F2937;
+    border: 1px solid #374151;
+    border-radius: 0.375rem;
+    color: #9CA3AF;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #6B7280;
+  }
+
+  /* Ensure the text becomes white when typing */
+  .contact-form input:not(:placeholder-shown),
+  .contact-form textarea:not(:placeholder-shown) {
+    color: white;
+  }
+
+  /* Override any default styles that might be interfering */
+  .contact-form input,
+  .contact-form textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .contact-input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #1F2937;
+    border: 1px solid #374151;
+    border-radius: 0.375rem;
+    color: white;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .contact-input:focus {
+    outline: none;
+    border-color: gold;
+    box-shadow: 0 0 0 2px gold;
+  }
+
+  .contact-input:focus + label,
+  .form-group:focus-within label {
+    color: #8B5CF6; /* Purple color for the label when input is focused */
+  }
+
+  .contact-input::placeholder {
+    color: #6B7280;
+  }
+
+  /* Style for filled inputs */
+  .contact-input:not(:placeholder-shown) {
+    background-color: #374151;
+  }
+
+  /* Popup styling (copied from productpage.css) */
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1F2937;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+
+  .popup h2 {
+    margin-top: 0;
+    color: white;
+  }
+
+  .popup p {
+    color: #D1D5DB;
+  }
+
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #9CA3AF;
+    cursor: pointer;
   }
