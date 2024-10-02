@@ -21,7 +21,7 @@
 }
 
 .address-form-container h2 {
-    color: #d4af37;
+    color: #06002e;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -33,7 +33,7 @@
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #d4af37;
+    color: #06002e;
     font-weight: bold;
 }
 
@@ -43,8 +43,8 @@
 .form-group textarea {
     width: 100%;
     padding: 10px;
-    background-color: #1c1c1c;
-    border: 1px solid #4b0082;
+    background-color: none;
+    border: 1px solid #06002e;
     border-radius: 5px;
     color: white;
     transition: border-color 0.3s ease;
