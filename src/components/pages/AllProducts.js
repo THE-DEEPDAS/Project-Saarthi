@@ -45,11 +45,11 @@ function AllProducts() {
   };
 
   const categoryCards = [
+    { title: 'Class 12 Books', description: 'Boost your preparation with Class 12 books, crucial for acing JEE and NEET exams!' },
     { title: 'All Books', description: 'Explore top-notch notes curated by expert educators, perfect for both JEE and NEET aspirants!' },
     { title: 'JEE Books', description: 'Crack JEE with this handpicked collection of the best study materials, crafted for success!' },
     { title: 'NEET Books', description: 'Master NEET with these essential notes, tailored to help you ace the exam with confidence!' },
     { title: 'Class 11 Books', description: 'Get a strong foundation with Class 11 books, essential for JEE and NEET preparation!' },
-    { title: 'Class 12 Books', description: 'Boost your preparation with Class 12 books, crucial for acing JEE and NEET exams!' },
   ];
 
   return (
@@ -59,12 +59,12 @@ function AllProducts() {
         {categoryCards.map((card, index) => (
           <div 
             key={index} 
-            className={`card ${index < 4 ? 'coming-soon' : ''}`}
-            onClick={() => index === 4 && setSelectedCategory('Class 12')}
+            className={`card ${index > 0 ? 'coming-soon' : ''}`}
+            onClick={() => index === 0 && setSelectedCategory('Class 12')}
           >
             <h3>{card.title}</h3>
             <p>{card.description}</p>
-            {index < 4 && <div className="coming-soon-overlay">Coming Soon</div>}
+            {index > 0 && <div className="coming-soon-overlay">Coming Soon</div>}
           </div>
         ))}
       </div>
