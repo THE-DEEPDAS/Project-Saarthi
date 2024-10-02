@@ -87,7 +87,7 @@ export default function ContactPage() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Email (optional)</label>
                 <Input
                   id="email"
                   className="contact-input"
@@ -96,7 +96,6 @@ export default function ContactPage() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
                 />
               </div>
               <div className="form-group">
@@ -109,6 +108,7 @@ export default function ContactPage() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="form-group">
