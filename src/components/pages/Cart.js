@@ -3,11 +3,10 @@ import './ui/Cart.css';
 
 // Sample book data (you would typically fetch this from an API)
 const allBooks = [
-  { id: 1, title: 'JEE Physics', subtitle: 'Class 11', category: 'JEE', price: '₹599', image: '/placeholder.svg?height=150&width=100', description: 'Comprehensive guide for JEE Physics, Class 11' },
-  { id: 2, title: 'JEE Chemistry', subtitle: 'Class 12', category: 'JEE', price: '₹649', image: '/placeholder.svg?height=150&width=100', description: 'In-depth study material for JEE Chemistry, Class 12' },
-  { id: 3, title: 'NEET Biology', subtitle: 'Class 11', category: 'NEET', price: '₹699', image: '/placeholder.svg?height=150&width=100', description: 'Essential Biology concepts for NEET, Class 11' },
-  { id: 4, title: 'NEET Chemistry', subtitle: 'Class 12', category: 'NEET', price: '₹749', image: '/placeholder.svg?height=150&width=100', description: 'Complete Chemistry guide for NEET aspirants, Class 12' },
-];
+  { id: 1, title: 'Class 12 Board Physics', subtitle: 'Class 12', category: 'Board', price: '₹399', image: '/placeholder.svg?height=150&width=100', description: 'Class 12 Board Physics Book' },
+  { id: 2, title: 'Class 12 Board Chemistry', subtitle: 'Class 12', category: 'Board', price: '₹449', image: '/placeholder.svg?height=150&width=100', description: 'Class 12 Board Chemistry Book' },
+  { id: 3, title: 'Class 12 Board Biology', subtitle: 'Class 12', category: 'Board', price: '₹499', image: '/placeholder.svg?height=150&width=100', description: 'Class 12 Board Biology Book' },
+]
 
 const Cart = ({ cart = [] }) => {
   const [paymentMethod, setPaymentMethod] = useState('');
@@ -22,17 +21,17 @@ const Cart = ({ cart = [] }) => {
 
   const getRecommendations = () => {
     if (cart.length === 0) return [];
-
+  
     const recommendations = [];
-    const cartClasses = new Set(cart.map(item => item.subtitle));
-
+    const cartCategory = new Set(cart.map(item => item.subtitle)); // Find class (like Class 12)
+  
     allBooks.forEach(book => {
-      if (!cart.some(item => item.id === book.id) && cartClasses.has(book.subtitle)) {
+      if (!cart.some(item => item.id === book.id) && cartCategory.has(book.subtitle)) {
         recommendations.push(book);
       }
     });
-
-    return recommendations.slice(0, 3); // Limit to 3 recommendations
+  
+    return recommendations.slice(0, 3);
   };
 
   const recommendations = getRecommendations();

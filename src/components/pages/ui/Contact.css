@@ -341,3 +341,60 @@
     color: #9CA3AF;
     cursor: pointer;
   }
+  
+  /* Add at the end of the file */
+
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .contact-form,
+  .contact-info {
+    padding: 1.5rem;
+    border-radius: 25px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .contact-input {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form,
+  .contact-info {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .contact-input {
+    font-size: 0.75rem;
+  }
+
+  .social-icons {
+    gap: 0.5rem;
+  }
+}

@@ -93,8 +93,43 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .address-form-container {
-        width: 90%;
+        width: 95%;
         padding: 15px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        font-size: 14px;
+    }
+
+    .submit-button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .address-form-container h2 {
+        font-size: 1.5em;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .submit-button {
+        font-size: 12px;
+        padding: 6px 10px;
     }
 }
 

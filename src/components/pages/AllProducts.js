@@ -37,7 +37,7 @@ const books = [
 ];
 
 function AllProducts() {
-  const [selectedCategory, setSelectedCategory] = useState('Class 12');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const navigate = useNavigate();
 
   const handleBookClick = (book) => {
@@ -51,6 +51,10 @@ function AllProducts() {
     { title: 'NEET Books', description: 'Master NEET with these essential notes, tailored to help you ace the exam with confidence!' },
     { title: 'Class 11 Books', description: 'Get a strong foundation with Class 11 books, essential for JEE and NEET preparation!' },
   ];
+
+  const filteredBooks = selectedCategory === 'All' 
+    ? books 
+    : books.filter(book => book.category === selectedCategory);
 
   return (
     <div className="book-catalog">
@@ -71,9 +75,9 @@ function AllProducts() {
 
       <main>
         <section id="all-books">
-          <h2>{selectedCategory} Books</h2>
+          <h2>{selectedCategory === 'All' ? 'All Books' : `${selectedCategory} Books`}</h2>
           <div className="book-grid">
-            {books.map(book => (
+            {filteredBooks.map(book => (
               <div key={book.id} className="book" onClick={() => handleBookClick(book)}>
                 <img src={book.images[0]} alt={book.title} className="book-image" />
                 <h3 className="book-title">{book.title}</h3>

@@ -254,3 +254,61 @@ body {
 .popup-message.show {
     opacity: 1;
 }
+
+/* Add at the end of the file */
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .image-carousel, .product-details {
+    width: 100%;
+    margin: 0;
+  }
+
+  .product-details {
+    margin-top: 20px;
+  }
+
+  .product-details h1 {
+    font-size: 2em;
+  }
+
+  .product-details p {
+    font-size: 1em;
+  }
+
+  .product-details h2 {
+    font-size: 1.5em;
+  }
+
+  .grab-button, .try-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .type-button {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-details h1 {
+    font-size: 1.5em;
+  }
+
+  .product-details p {
+    font-size: 0.9em;
+  }
+
+  .product-details h2 {
+    font-size: 1.2em;
+  }
+
+  .grab-button, .try-button {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}

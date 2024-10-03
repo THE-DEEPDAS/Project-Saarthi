@@ -223,3 +223,40 @@ h2 {
   border-radius: 5px;
   background-color: #ffeeee;
 }
+
+/* Add at the end of the file */
+
+@media (max-width: 768px) {
+  .category-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 300px;
+    margin-bottom: 1rem;
+  }
+
+  .book-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .filters button {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .book-title {
+    font-size: 0.9rem;
+  }
+
+  .book-subtitle {
+    font-size: 0.8rem;
+  }
+}
