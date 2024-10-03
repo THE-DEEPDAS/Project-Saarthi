@@ -95,7 +95,7 @@
   
   .form-group label {
     font-size: 0.875rem;
-    color: #9CA3AF;
+    color: #ffffff !important; 
     margin-bottom: 0.5rem;
     transition: color 0.3s ease;
   }

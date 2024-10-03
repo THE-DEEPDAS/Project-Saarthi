@@ -42,7 +42,7 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #4a4a4a;
+  color: #06002e !important;
   font-weight: 600;
   transition: color 0.3s ease;
 }
@@ -51,19 +51,24 @@
 .form-group textarea {
   width: 100%;
   padding: 0.75rem;
-  background-color: #f7f7f7;
-  border: 1px solid #d1d1d1;
+  background-color: #ffffff !important;
+  border: 1px solid #06002e !important;
   border-radius: 8px;
   font-size: 1rem;
-  color: #333333;
+  color: #000000 !important;
   transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #06002e !important;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #8e44ad;
-  box-shadow: 0 0 0 2px rgba(142, 68, 173, 0.2), 0 0 10px rgba(138, 43, 226, 0.5);
+  border-color: #06002e !important;
+  box-shadow: 0 0 0 2px rgba(6, 0, 46, 0.2) !important;
 }
 
 .form-group textarea {
@@ -91,6 +96,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+  gap: 1rem; /* This adds space between the buttons */
 }
 
 .form-actions button {
