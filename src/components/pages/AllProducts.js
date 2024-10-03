@@ -46,10 +46,10 @@ function AllProducts() {
 
   const categoryCards = [
     { title: 'Class 12 Books', description: 'Boost your preparation with Class 12 books, crucial for acing Board exams!' },
-    { title: 'All Books', description: 'Explore top-notch notes curated by expert educators, perfect for both JEE and NEET aspirants!' },
+    { title: 'All Books', description: 'Explore top-notch notes curated by expert educators, perfect for all kind of aspirants!' },
     { title: 'JEE Books', description: 'Crack JEE with this handpicked collection of the best study materials, crafted for success!' },
     { title: 'NEET Books', description: 'Master NEET with these essential notes, tailored to help you ace the exam with confidence!' },
-    { title: 'Class 11 Books', description: 'Get a strong foundation with Class 11 books, essential for JEE and NEET preparation!' },
+    { title: 'Class 11 Books', description: 'Get a strong foundation with Class 11 books, essential for Future Endavours!' },
   ];
 
   const filteredBooks = selectedCategory === 'All' 
