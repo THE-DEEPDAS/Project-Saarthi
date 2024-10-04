@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ui/AllProducts.css';
 
-// Updated sample data without displaying prices
+// Sample data (unchanged)
 const books = [
   { 
     id: 1, 
@@ -39,6 +39,7 @@ const books = [
 function AllProducts() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const navigate = useNavigate();
+  const booksRef = useRef(null);
 
   const handleBookClick = (book) => {
     navigate('/product', { state: { book } });
@@ -56,6 +57,23 @@ function AllProducts() {
     ? books 
     : books.filter(book => book.category === selectedCategory);
 
+  const handleCategoryClick = (index, category) => {
+    if (index === 0) {
+      setSelectedCategory('Class 12');
+      // Scroll to the books section
+      if (booksRef.current) {
+        booksRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Scroll to books section when selectedCategory changes to 'Class 12'
+    if (selectedCategory === 'Class 12' && booksRef.current) {
+      booksRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [selectedCategory]);
+
   return (
     <div className="book-catalog">
       {/* Category Selection Cards */}
@@ -64,7 +82,7 @@ function AllProducts() {
           <div 
             key={index} 
             className={`card ${index > 0 ? 'coming-soon' : ''}`}
-            onClick={() => index === 0 && setSelectedCategory('Class 12')}
+            onClick={() => handleCategoryClick(index, card.title)}
           >
             <h3>{card.title}</h3>
             <p>{card.description}</p>
@@ -74,7 +92,7 @@ function AllProducts() {
       </div>
 
       <main>
-        <section id="all-books">
+        <section id="all-books" ref={booksRef}>
           <h2>{selectedCategory === 'All' ? 'All Books' : `${selectedCategory} Books`}</h2>
           <div className="book-grid">
             {filteredBooks.map(book => (
