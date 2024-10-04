@@ -67,6 +67,7 @@ html, body {
     color: aliceblue;
     transform: scale(1.1);
     transition: ease-in-out 0.4s;
+    text-shadow: 1px 1px 3px rgba(146, 155, 181, 0.292);
 }
 
 .footer > div:active {
@@ -78,6 +79,7 @@ html, body {
 @media (max-width: 768px) {
     .footer {
         gap: 5px; /* Adjust gap for smaller screens */
+        bottom: 3vw;
     }
 }
 
@@ -85,9 +87,140 @@ html, body {
     .footer {
         width: 100%;
         gap: 5px;
+        bottom: 10vw;
     }
     
     .footer > div {
         font-size: clamp(0.7rem, 2.5vw, 1rem); /* Adjust font size for small screens */
+    }
+}
+
+/* Banner styles */
+.banner {
+    width: 25%;
+    display: flex;
+    justify-content: flex-start; /* Ensures the image starts at the left within the flex container */
+    align-items: flex-start; /* Keeps the image aligned at the top inside the banner */
+    position: fixed; /* Fixes the position relative to the viewport */
+    right: 8vw; /* Positions the banner at the right side */
+    bottom: 8vw; /* Positions the banner at the bottom of the page */
+    margin: 0;
+    z-index: 10; /* Ensures the banner stays on top of other content if needed */
+    transform: rotate(15deg);
+}
+
+.bannerimg {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.bannerimg:hover {
+    transform: scale(1.1);
+    transition: transform 0.4s ease-in-out;
+}
+
+.bannerimg:active {
+    transform: scale(0.8);
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Responsive styles */
+
+/* For tablet devices */
+@media (max-width: 768px) {
+    .banner {
+        width: 40%;
+        right: 3vw; /* Positions the banner at the right side */
+        bottom: 18vw;
+    }
+
+    .bannerimg {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+    .banner {
+        width: 60%;
+        right: 5vw; /* Positions the banner at the right side */
+        bottom: 30vw;
+    }
+
+    .bannerimg {
+        max-width: 100%;
+        border-radius: 4px;
+    }
+}
+
+/* Whatsapp button styling */
+.whatsapp {
+    position: fixed;
+    bottom: 5vw;
+    left: 1vw;
+    z-index: 1000;
+}
+
+.whatsapp-button {
+    background-color: #25d366;
+    border: none;
+    width: 4vw;   /* Ensure equal width and height */
+    height: 4vw;  /* Ensure equal width and height */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.15);
+    background-color: #25d366;
+}
+
+.whatsapp-button svg {
+    width: 2.5vw;
+    height: 2.5vw;
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+    .whatsapp {
+        bottom: 20vw;   /* Approx 15px converted to 2vw */
+        right: 3vw;    /* Approx 15px converted to 2vw */
+    }
+
+    .whatsapp-button {
+        width: 6.5vw;   /* Approx 50px converted to 6.5vw */
+        height: 6.5vw;  /* Approx 50px converted to 6.5vw */
+    }
+
+    .whatsapp-button svg {
+        width: 4vw;   /* Approx 20px converted to 2.6vw */
+        height: 4vw;  /* Approx 20px converted to 2.6vw */
+    }
+}
+
+
+@media (max-width: 480px) {
+    .whatsapp {
+        bottom: 45vw;
+        right: 5vw;
+    }
+
+    .whatsapp-button {
+        width: 10vw;   /* Set equal width and height in px */
+        height: 10vw;  /* Set equal width and height in px */
+    }
+
+    .whatsapp-button svg {
+        width: 5.6vw;
+        height: 5.6vw;
     }
 }
