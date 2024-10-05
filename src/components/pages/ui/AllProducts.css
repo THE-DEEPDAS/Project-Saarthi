@@ -76,7 +76,7 @@ section {
 
 h2 {
   margin-bottom: 1rem;
-  color: #a020f0;
+  color: #ffffff;
 }
 
 .filters {
@@ -113,7 +113,9 @@ h2 {
 
 .book:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
+  background-color: #06002e;
+  box-shadow: 8px 8px 10px rgba(130,115,89,0.7) ;
+  transition: 0.3s ease-in-out;
 }
 
 .book-image {
@@ -130,7 +132,7 @@ h2 {
 
 .book-subtitle {
   font-size: 0.9rem;
-  color: #a020f0;
+  color: #d4af37;
 }
 
 @media (max-width: 768px) {
@@ -166,8 +168,10 @@ h2 {
 }
 
 .card:hover {
-  background-color: #a020f0;
+  background-color: #06002e;
+  box-shadow: 8px 8px 10px rgba(130,115,89,0.7) ;
   transform: translateY(-5px);
+  transition: 0.3s ease-in-out;
 }
 
 .card.coming-soon {
