@@ -36,7 +36,7 @@ const Home = () => {
           <Link to="/allproducts">Pricing</Link>
         </div>
 
-        <div className="featured">Featured</div>
+        {/* <div className="featured">Featured</div> */}
       </div>
 
     
