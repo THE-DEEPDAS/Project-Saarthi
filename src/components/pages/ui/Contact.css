@@ -57,7 +57,7 @@
   }
   
   .contact-info {
-    background: linear-gradient(to bottom right, #7C3AED, #5B21B6);
+    background-color: #827359;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
   }
@@ -156,7 +156,7 @@
   }
   
   button:hover {
-    background-color: #8B5CF6;
+    background-color: #7f8187;
     color: white;
     transform: scale(1.05);
   }
