@@ -1,8 +1,8 @@
 import React from 'react';
 import page6Image from './images/page6.png';
-import BottomLeftImage from './images/Bottom-left.png';
-import BottomRightImage from './images/Bottom-right.png';
-import TopImage from './images/top.png';
+//import BottomLeftImage from './images/Bottom-left.png';
+//import BottomRightImage from './images/Bottom-right.png';
+//import TopImage from './images/top.png';
 import readyToWorkImage from './images/Ready to work with us.png';
 import './ui/About.css';
 
@@ -12,7 +12,7 @@ const About = () => {
       {/* Page 1 */}
       <div className='page1' style={{ backgroundImage: `url(${readyToWorkImage})` }}>
         <div className='page1_maintext'>
-          QUALITY PRODUCTS FOR <br /> QUALITY EDUCATION
+          Bridging the gap between students and essential learning resources.
         </div>
       </div>
 
@@ -75,8 +75,8 @@ const About = () => {
         </div>
       </div>
 
-      {/* Page 5: What We've Done */}
-
+      {/* Page 5: What We've Done 
+      
       <div class="page5">
           <div class="page5_maintext">Revolutionizing education by bridging the gap between students and essential learning resources.</div>
           <img src={BottomLeftImage} className="corner-object object-bottom-left" alt="Bottom Left Object" />
@@ -84,8 +84,8 @@ const About = () => {
           <img src={TopImage} className="corner-object object-top-center" alt="Top Center Object" />
 
       </div>
-
-      {/* Page 6*/}
+      
+      */}
       
 
 
