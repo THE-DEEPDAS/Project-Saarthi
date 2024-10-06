@@ -73,7 +73,7 @@ export default function ContactPage() {
             <h1>Contact Us</h1>
             <p>We're here to help with your book-related inquiries!</p>
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
+              <div className="cform-group">
                 <label htmlFor="name">Name</label>
                 <Input
                   id="name"
@@ -86,7 +86,7 @@ export default function ContactPage() {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="cform-group">
                 <label htmlFor="email">Email (optional)</label>
                 <Input
                   id="email"
@@ -98,7 +98,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group">
+              <div className="cform-group">
                 <label htmlFor="phone">Phone</label>
                 <Input
                   id="phone"
@@ -111,7 +111,7 @@ export default function ContactPage() {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="cform-group">
                 <label htmlFor="orderNumber">Order Number</label>
                 <Input
                   id="orderNumber"
@@ -123,7 +123,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group">
+              <div className="cform-group">
                 <label htmlFor="subject">Subject</label>
                 <Input
                   id="subject"
@@ -136,7 +136,7 @@ export default function ContactPage() {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="cform-group">
                 <label htmlFor="message">Message</label>
                 <Textarea
                   id="message"
