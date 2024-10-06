@@ -81,6 +81,12 @@ html, body {
         gap: 5px; /* Adjust gap for smaller screens */
         bottom: 3vw;
     }
+    .footer > div {
+        font-size: clamp(1.5rem, 2.5vw, 1rem); /* Adjust font size for small screens */
+    }
+    .maintext{
+        top: 33vh;
+    }
 }
 
 @media (max-width: 480px) {
@@ -91,7 +97,10 @@ html, body {
     }
     
     .footer > div {
-        font-size: clamp(0.7rem, 2.5vw, 1rem); /* Adjust font size for small screens */
+        font-size: clamp(1rem, 2.5vw, 1rem); /* Adjust font size for small screens */
+    }
+    .maintext{
+        top: 33vh;
     }
 }
 
@@ -161,7 +170,7 @@ html, body {
 .whatsapp {
     position: fixed;
     bottom: 5vw;
-    left: 1vw;
+    right: 1vw;
     z-index: 1000;
 }
 
@@ -192,7 +201,7 @@ html, body {
 /* Make it responsive */
 @media (max-width: 768px) {
     .whatsapp {
-        bottom: 20vw;   /* Approx 15px converted to 2vw */
+        bottom: 10vw;   /* Approx 15px converted to 2vw */
         right: 3vw;    /* Approx 15px converted to 2vw */
     }
 
@@ -210,7 +219,7 @@ html, body {
 
 @media (max-width: 480px) {
     .whatsapp {
-        bottom: 45vw;
+        bottom: 26vw;
         right: 5vw;
     }
 
