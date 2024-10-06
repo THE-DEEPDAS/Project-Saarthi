@@ -48,11 +48,12 @@
 }
 
 .page1_maintext {
-    color: white;
-    font-size: clamp(2rem, 5.5vw, 8rem);  
+    color: #FAFAD2;
+    font-size: clamp(2rem, 5.8vw, 8rem);  
     text-align: center;
     padding: 20px;
-    text-shadow: 3px 3px 5px rgba(137, 118, 135, 0.721);
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 450;
 }
 
 /* PAGE 2 */
@@ -182,7 +183,7 @@
 
 /* PAGE 4*/
 .page4 {
-    background: linear-gradient(90deg, #191f37, #807e53);  
+    background: linear-gradient(75deg, #0c0829, #79763c);  
     position: relative;
     height: 100vh;
     display: flex;
