@@ -27,6 +27,7 @@
     flex-direction: column;
     min-height: calc(100vh - 80px); 
     width: 100%;
+    gap: 15px;
   }
   
   .contact-content {
@@ -86,14 +87,14 @@
     gap: 1.5rem;
   }
   
-  .form-group {
+  .cform-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
     position: relative;
   }
   
-  .form-group label {
+  .cform-group label {
     font-size: 0.875rem;
     color: #ffffff !important; 
     margin-bottom: 0.5rem;
@@ -123,7 +124,7 @@
     resize: vertical;
   }
   
-  .form-group::after {
+  .cform-group::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -134,11 +135,11 @@
     transition: all 0.3s ease;
   }
   
-  .form-group:focus-within::after {
+  .cform-group:focus-within::after {
     background-color: gold;
   }
   
-  .form-group:hover::after {
+  .cform-group:hover::after {
     width: 100%;
   }
   
@@ -224,7 +225,7 @@
     color: white;
   }
 
-  .contact-form .form-group {
+  .contact-form .cform-group {
     margin-bottom: 1rem;
   }
 
@@ -286,7 +287,7 @@
   }
 
   .contact-input:focus + label,
-  .form-group:focus-within label {
+  .cform-group:focus-within label {
     color: #8B5CF6; /* Purple color for the label when input is focused */
   }
 
