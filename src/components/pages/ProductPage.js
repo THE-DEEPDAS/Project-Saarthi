@@ -1,31 +1,67 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./ui/ProductPage.css";
 
 const ProductPage = ({ addToCart }) => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const { book } = location.state || {};
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const location = useLocation();
+  const { selectedBook, allBooks } = location.state || {};
+  const [currentBookIndex, setCurrentBookIndex] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
   const [selectedTypes, setSelectedTypes] = useState({
     eBook: false,
     physicalCopy: false
   });
 
-  if (!book) {
-    return <div>No book selected</div>;
-  }
+  const books = allBooks || [
+    {
+      id: 1,
+      title: "Class 12 Board Physics",
+      description: "Comprehensive guide for Class 12 Board Physics",
+      eBookPrice: "₹449",
+      physicalPrice: "₹599",
+      images: ["/placeholder.svg?height=400&width=300"]
+    },
+    {
+      id: 2,
+      title: "Class 12 Board Chemistry",
+      description: "In-depth study material for Class 12 Board Chemistry",
+      eBookPrice: "₹499",
+      physicalPrice: "₹649",
+      images: ["/placeholder.svg?height=400&width=300"]
+    },
+    {
+      id: 3,
+      title: "Class 12 Board Biology",
+      description: "Complete solution for Class 12 Board Biology",
+      eBookPrice: "₹549",
+      physicalPrice: "₹699",
+      images: ["/placeholder.svg?height=400&width=300"]
+    }
+  ];
+
+  useEffect(() => {
+    if (selectedBook) {
+      const index = books.findIndex(book => book.id === selectedBook.id);
+      setCurrentBookIndex(index !== -1 ? index : 0);
+    }
+  }, [selectedBook, books]);
+
+  const currentBook = books[currentBookIndex];
+
+  useEffect(() => {
+    setSelectedTypes({ eBook: false, physicalCopy: false });
+  }, [currentBookIndex]);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === book.images.length - 1 ? 0 : prevIndex + 1
+    setCurrentBookIndex((prevIndex) =>
+      prevIndex === books.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? book.images.length - 1 : prevIndex - 1
+    setCurrentBookIndex((prevIndex) =>
+      prevIndex === 0 ? books.length - 1 : prevIndex - 1
     );
   };
 
@@ -38,9 +74,9 @@ const ProductPage = ({ addToCart }) => {
 
   const calculatePrice = () => {
     let total = 0;
-    if (selectedTypes.eBook) total += parseFloat(book.eBookPrice.replace('₹', ''));
-    if (selectedTypes.physicalCopy) total += parseFloat(book.physicalPrice.replace('₹', ''));
-    return total === 0 ? book.eBookPrice : `₹${total}`;
+    if (selectedTypes.eBook) total += parseFloat(currentBook.eBookPrice.replace('₹', ''));
+    if (selectedTypes.physicalCopy) total += parseFloat(currentBook.physicalPrice.replace('₹', ''));
+    return total === 0 ? currentBook.eBookPrice : `₹${total}`;
   };
 
   const handlePurchase = () => {
@@ -54,14 +90,14 @@ const ProductPage = ({ addToCart }) => {
       navigate('/address-form', { 
         state: { 
           book: { 
-            ...book, 
+            ...currentBook, 
             type: selectedTypes.eBook ? 'Both' : 'Physical Copy',
             price: calculatePrice()
           } 
         } 
       });
     } else {
-      addToCart({ ...book, type: 'E-Book', price: book.eBookPrice });
+      addToCart({ ...currentBook, type: 'E-Book', price: currentBook.eBookPrice });
       setShowMessage(true);
       setTimeout(() => {
         setShowMessage(false);
@@ -71,8 +107,7 @@ const ProductPage = ({ addToCart }) => {
   };
 
   const handleTryForFree = () => {
-    // Implement the "Try it out for free" functionality here
-    console.log("Try it out for free clicked");
+    console.log("Try it out for free clicked for", currentBook.title);
   };
 
   return (
@@ -83,35 +118,25 @@ const ProductPage = ({ addToCart }) => {
         </div>
       )}
 
-      {/* Image Carousel */}
       <div className="image-carousel">
-        <div
-          className="carousel-track"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {book.images.map((image, index) => (
-            <img
-              src={image}
-              alt={`${book.title} ${index + 1}`}
-              className="carousel-image"
-              key={index}
-            />
-          ))}
-        </div>
+        <img
+          src={currentBook.images[0]}
+          alt={currentBook.title}
+          className="carousel-image"
+        />
         <div className="buttons-container">
-          <button className="prev" onClick={handlePrev}>
+          <button className="prev" onClick={handlePrev} aria-label="Previous book">
             ❮
           </button>
-          <button className="next" onClick={handleNext}>
+          <button className="next" onClick={handleNext} aria-label="Next book">
             ❯
           </button>
         </div>
       </div>
 
-      {/* Product Details */}
       <div className="product-details">
-        <h1>{book.title}</h1>
-        <p>{book.description}</p>
+        <h1>{currentBook.title}</h1>
+        <p>{currentBook.description}</p>
         <h2>{calculatePrice()}</h2>
         <div className="type-selection">
           <button 

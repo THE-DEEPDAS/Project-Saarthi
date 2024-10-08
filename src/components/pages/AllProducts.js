@@ -42,7 +42,7 @@ function AllProducts() {
   const booksRef = useRef(null);
 
   const handleBookClick = (book) => {
-    navigate('/product', { state: { book } });
+    navigate('/product', { state: { selectedBook: book, allBooks: books } });
   };
 
   const categoryCards = [

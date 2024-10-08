@@ -23,15 +23,24 @@ const Cart = ({ cart = [] }) => {
     if (cart.length === 0) return [];
   
     const recommendations = [];
-    const cartCategory = new Set(cart.map(item => item.subtitle)); // Find class (like Class 12)
+    const cartItems = new Set(cart.map(item => item.id));
+    const physicsBook = allBooks.find(book => book.title.includes('Physics'));
   
-    allBooks.forEach(book => {
-      if (!cart.some(item => item.id === book.id) && cartCategory.has(book.subtitle)) {
-        recommendations.push(book);
-      }
-    });
+    if (cartItems.has(physicsBook.id)) {
+      allBooks.forEach(book => {
+        if (book.subtitle === 'Class 12' && !book.title.includes('Physics') && !cartItems.has(book.id)) {
+          recommendations.push(book);
+        }
+      });
+    } else {
+      allBooks.forEach(book => {
+        if (!cartItems.has(book.id) && book.subtitle === 'Class 12') {
+          recommendations.push(book);
+        }
+      });
+    }
   
-    return recommendations.slice(0, 3);
+    return recommendations.slice(0, 2);
   };
 
   const recommendations = getRecommendations();
