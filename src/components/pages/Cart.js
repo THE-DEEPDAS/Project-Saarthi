@@ -1,12 +1,35 @@
 import React, { useState } from 'react';
 import './ui/Cart.css';
 
-// Sample book data (you would typically fetch this from an API)
 const allBooks = [
-  { id: 1, title: 'Class 12 Board Physics', subtitle: 'Class 12', category: 'Board', price: '₹399', image: '/placeholder.svg?height=150&width=100', description: 'Class 12 Board Physics Book' },
-  { id: 2, title: 'Class 12 Board Chemistry', subtitle: 'Class 12', category: 'Board', price: '₹449', image: '/placeholder.svg?height=150&width=100', description: 'Class 12 Board Chemistry Book' },
-  { id: 3, title: 'Class 12 Board Biology', subtitle: 'Class 12', category: 'Board', price: '₹499', image: '/placeholder.svg?height=150&width=100', description: 'Class 12 Board Biology Book' },
-]
+  { 
+    id: 1, 
+    title: 'Class 12 Board Physics', 
+    subtitle: 'Class 12', 
+    category: 'Board', 
+    price: '₹399', 
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(149)-EaiSODwIzWWyQg9oLdFkroQ2lyge6l.png', 
+    description: 'Class 12 Board Physics Book' 
+  },
+  { 
+    id: 2, 
+    title: 'Class 12 Board Chemistry', 
+    subtitle: 'Class 12', 
+    category: 'Board', 
+    price: '₹449', 
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(147)-QHmVjrTqVKLMBnVsHKgDka1lRd3vXF.png', 
+    description: 'Class 12 Board Chemistry Book' 
+  },
+  { 
+    id: 3, 
+    title: 'Class 12 Board Biology', 
+    subtitle: 'Class 12', 
+    category: 'Board', 
+    price: '₹499', 
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(148)-q2hsE6nuXZTxdmv8t4AU2E4tpxAfgT.png', 
+    description: 'Class 12 Board Biology Book' 
+  },
+];
 
 const Cart = ({ cart = [] }) => {
   const [paymentMethod, setPaymentMethod] = useState('');
@@ -53,17 +76,25 @@ const Cart = ({ cart = [] }) => {
           <p>Your cart is empty</p>
         ) : (
           <div className="cart-items">
-            {cart.map((item, index) => (
-              <div key={index} className="cart-item">
-                <img src={item.image} alt={item.title} className="cart-item-image" />
-                <div className="cart-item-details">
-                  <h3>{item.title}</h3>
-                  <p>Price: {item.price}</p>
-                  {item.type && <p>Type: {item.type}</p>}
-                  {item.status && <p>Status: {item.status}</p>}
+            {cart.map((item, index) => {
+              const book = allBooks.find(book => book.id === item.id) || item;
+              return (
+                <div key={index} className="cart-item">
+                  <img 
+                    src={book.image} 
+                    alt={book.title} 
+                    className="cart-item-image" 
+                    style={{ width: '200px', height: '250px', objectFit: 'cover' }}
+                  />
+                  <div className="cart-item-details">
+                    <h3>{book.title}</h3>
+                    <p>Price: {book.price}</p>
+                    {book.type && <p>Type: {book.type}</p>}
+                    {book.status && <p>Status: {book.status}</p>}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
@@ -114,10 +145,15 @@ const Cart = ({ cart = [] }) => {
           <div className="recommendations-grid">
             {recommendations.map((book, index) => (
               <div key={index} className="recommendation-item">
-                <img src={book.image} alt={book.title} className="recommendation-image" />
+                <img 
+                  src={book.image} 
+                  alt={book.title} 
+                  className="recommendation-image" 
+                  style={{ width: '100px', height: '150px', objectFit: 'cover' }}
+                />
                 <div className="recommendation-details">
                   <h3>{book.title}</h3>
-                  <p>{book.subtitle}</p>
+                  
                   <p>Price: {book.price}</p>
                 </div>
               </div>
