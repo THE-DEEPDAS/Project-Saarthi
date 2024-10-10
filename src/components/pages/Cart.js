@@ -35,7 +35,14 @@ const Cart = ({ cart = [] }) => {
   const [paymentMethod, setPaymentMethod] = useState('');
 
   const calculateTotal = () => {
-    return cart.reduce((total, item) => total + parseFloat(item.price.replace('₹', '')), 0);
+    return cart.reduce((total, item) => {
+      // For physical books, use the price from the item itself
+      // For digital books, use the price from allBooks
+      const price = item.type === 'Physical Copy' 
+        ? parseFloat(item.price.replace('₹', ''))
+        : parseFloat(allBooks.find(book => book.id === item.id)?.price.replace('₹', '') || '0');
+      return total + price;
+    }, 0);
   };
 
   const handleCheckout = () => {
@@ -88,9 +95,9 @@ const Cart = ({ cart = [] }) => {
                   />
                   <div className="cart-item-details">
                     <h3>{book.title}</h3>
-                    <p>Price: {book.price}</p>
-                    {book.type && <p>Type: {book.type}</p>}
-                    {book.status && <p>Status: {book.status}</p>}
+                    <p>Price: {item.type === 'Physical Copy' ? item.price : book.price}</p>
+                    {item.type && <p>Type: {item.type}</p>}
+                    {item.status && <p>Status: {item.status}</p>}
                   </div>
                 </div>
               );
