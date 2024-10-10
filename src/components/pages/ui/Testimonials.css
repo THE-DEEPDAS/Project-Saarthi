@@ -19,10 +19,11 @@
   display: flex;
   transition: transform 0.5s ease;
   gap: 15px;
+  width: 140%; /* Accommodate 7 testimonials (7/5 * 100%) */
 }
 
 .testimonial-card {
-  flex: 0 0 33.33%; 
+  flex: 0 0 calc(20% - 12px); /* 100% / 5, adjusted for gap */
   background-color: #ffffff;
   border-radius: 1rem;
   padding: 1.5rem;

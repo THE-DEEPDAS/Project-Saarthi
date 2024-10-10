@@ -4,8 +4,8 @@ import './ui/TestimonialForm.css'
 export default function TestimonialForm({ onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     name: '',
-    company: '',
-    role: '',
+    institution: '',
+    class: '',
     comment: '',
     rating: 5
   })
@@ -35,23 +35,23 @@ export default function TestimonialForm({ onSubmit, onCancel }) {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="company">Company/Institution:</label>
+        <label htmlFor="institution">Institution:</label>
         <input
           type="text"
-          id="company"
-          name="company"
-          value={formData.company}
+          id="institution"
+          name="institution"
+          value={formData.institution}
           onChange={handleChange}
           required
         />
       </div>
       <div className="form-group">
-        <label htmlFor="role">Title/Role:</label>
+        <label htmlFor="class">Class:</label>
         <input
           type="text"
-          id="role"
-          name="role"
-          value={formData.role}
+          id="class"
+          name="class"
+          value={formData.class}
           onChange={handleChange}
           required
         />
