@@ -38,8 +38,9 @@
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #d4af37;
+    color: #d4af37 !important;
     font-weight: bold;
+    
 }
 
 .form-group input[type="text"],
