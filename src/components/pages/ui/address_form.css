@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 .address-form-container {
     max-width: 600px;
     margin: 0 auto;
@@ -7,6 +11,8 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-in-out;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    max-height: 90vh; /* Limit height to prevent overflow */
 }
 
 .address-form-container h2{
@@ -169,4 +175,14 @@
 .error {
     background-color: #333;
     color: #FF6347;
+}
+
+/* Hide scrollbar for Webkit browsers */
+.address-form-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+.address-form-container {
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
 }

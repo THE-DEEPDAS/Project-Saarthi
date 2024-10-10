@@ -8,8 +8,8 @@ const books = [
     title: 'Class 12 Board Physics', 
     subtitle: 'Class 12', 
     category: 'Class 12', 
-    eBookPrice: '₹399', 
-    physicalPrice: '₹599', 
+    eBookPrice: '₹199', 
+    physicalPrice: '₹699', 
     images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(149)-mUz9DSdxsjo3o8GSohtQNdyUjmnHs5.png'], 
     description: 'Comprehensive guide for Class 12 Board Physics' 
   },
@@ -18,8 +18,8 @@ const books = [
     title: 'Class 12 Board Chemistry', 
     subtitle: 'Class 12', 
     category: 'Class 12', 
-    eBookPrice: '₹449', 
-    physicalPrice: '₹649', 
+    eBookPrice: '₹199', 
+    physicalPrice: '₹699', 
     images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(147)-1q4Wl115EEQ37QdqM0tX5rKPi58GZf.png'], 
     description: 'In-depth study material for Class 12 Board Chemistry' 
   },
@@ -28,7 +28,7 @@ const books = [
     title: 'Class 12 Board Biology', 
     subtitle: 'Class 12', 
     category: 'Class 12', 
-    eBookPrice: '₹499', 
+    eBookPrice: '₹199', 
     physicalPrice: '₹699', 
     images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(148)-vjAPMwLTAD1IkwVYHkn5HHSfID33N1.png'], 
     description: 'Essential Biology concepts for Class 12 Board' 
@@ -48,7 +48,7 @@ export default function AllProducts() {
     { title: 'Class 12 Books', description: 'Boost your preparation with Class 12 books, crucial for acing Board exams!' },
     { title: 'JEE Books', description: 'Crack JEE with this handpicked collection of the best study materials, crafted for success!' },
     { title: 'NEET Books', description: 'Master NEET with these essential notes, tailored to help you ace the exam with confidence!' },
-    { title: 'Class 11 Books', description: 'Get a strong foundation with Class 11 books, essential for Future Endavours!' },
+    { title: 'Class 11 Books', description: 'Get a strong foundation with Class 11 books, essential for Future Endeavours!' },
   ];
 
   const filteredBooks = selectedCategory === 'All' 
@@ -56,7 +56,7 @@ export default function AllProducts() {
     : books.filter(book => book.category === selectedCategory);
 
   const handleCategoryClick = (index, category) => {
-    if (index === 0) {
+    if (index === 0) { // Class 12 Books
       setSelectedCategory('Class 12');
       if (booksRef.current) {
         booksRef.current.scrollIntoView({ behavior: 'smooth' });

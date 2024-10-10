@@ -28,6 +28,14 @@ const AddressForm = ({ addToCart }) => {
   };
 
   useEffect(() => {
+    // Enable smooth scrolling
+    document.body.style.overflow = 'auto'; // Ensure body is scrollable
+    return () => {
+      document.body.style.overflow = 'auto'; // Reset on unmount
+    };
+  }, []);
+
+  useEffect(() => {
     if (message) {
       setShowMessage(true);
       const timer = setTimeout(() => {
