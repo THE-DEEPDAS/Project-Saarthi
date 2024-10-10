@@ -140,14 +140,14 @@ const ProductPage = ({ addToCart }) => {
         <h2>{calculatePrice()}</h2>
         <div className="type-selection">
           <button 
-            className={`type-button ${selectedTypes.eBook ? 'selected' : ''}`}
+            className={`type-button ${selectedTypes.eBook ? 'selected' : 'deselected'}`}
             onClick={() => handleTypeSelect('eBook')}
           >
             <span className="dot"></span>
             E-BOOK
           </button>
           <button 
-            className={`type-button ${selectedTypes.physicalCopy ? 'selected' : ''}`}
+            className={`type-button ${selectedTypes.physicalCopy ? 'selected' : 'deselected'}`}
             onClick={() => handleTypeSelect('physicalCopy')}
           >
             <span className="dot"></span>
@@ -257,11 +257,17 @@ const ProductPage = ({ addToCart }) => {
           display: flex;
           align-items: center;
           gap: 0.5rem;
+          transition: all 0.3s ease;
         }
 
         .type-button.selected {
           background-color: #8b5cf6;
           color: #fff;
+        }
+
+        .type-button.deselected {
+          background-color: #000;
+          color: #8b5cf6;
         }
 
         .dot {

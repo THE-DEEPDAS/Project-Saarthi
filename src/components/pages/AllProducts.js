@@ -46,7 +46,6 @@ export default function AllProducts() {
 
   const categoryCards = [
     { title: 'Class 12 Books', description: 'Boost your preparation with Class 12 books, crucial for acing Board exams!' },
-    { title: 'All Books', description: 'Explore top-notch notes curated by expert educators, perfect for all kind of aspirants!' },
     { title: 'JEE Books', description: 'Crack JEE with this handpicked collection of the best study materials, crafted for success!' },
     { title: 'NEET Books', description: 'Master NEET with these essential notes, tailored to help you ace the exam with confidence!' },
     { title: 'Class 11 Books', description: 'Get a strong foundation with Class 11 books, essential for Future Endavours!' },
@@ -75,7 +74,7 @@ export default function AllProducts() {
     <div className="book-catalog">
       <div className="category-cards">
         {categoryCards.map((card, index) => (
-          <div 
+          <button 
             key={index} 
             className={`card ${index > 0 ? 'coming-soon' : ''}`}
             onClick={() => handleCategoryClick(index, card.title)}
@@ -83,7 +82,7 @@ export default function AllProducts() {
             <h3>{card.title}</h3>
             <p>{card.description}</p>
             {index > 0 && <div className="coming-soon-overlay">Coming Soon</div>}
-          </div>
+          </button>
         ))}
       </div>
 
@@ -110,6 +109,52 @@ export default function AllProducts() {
           color: #fff;
           padding: 2rem;
         }
+        .category-cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1rem;
+          margin-bottom: 2rem;
+        }
+        .card {
+          background-color: #111;
+          border: 2px solid #333;
+          border-radius: 8px;
+          padding: 1.5rem;
+          text-align: center;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+        }
+        .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+        .card h3 {
+          color: #f97316;
+          margin-bottom: 0.5rem;
+        }
+        .card p {
+          font-size: 0.9rem;
+          color: #ccc;
+        }
+        .coming-soon {
+          opacity: 0.7;
+        }
+        .coming-soon-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #fff;
+        }
         .book-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -126,15 +171,18 @@ export default function AllProducts() {
           transition: transform 0.2s ease-in-out;
         }
         .book:hover {
+        cursor:pointer;
           transform: scale(1.05);
         }
         .book-image-container {
+        cursor:pointer;
           width: 100%;
           padding-top: 141.42%; /* Aspect ratio of 1:√2 (common for book covers) */
           position: relative;
           overflow: hidden;
         }
         .book-image {
+        cursor:pointer;
           position: absolute;
           top: 0;
           left: 0;
@@ -143,12 +191,14 @@ export default function AllProducts() {
           object-fit: cover;
         }
         .book-title {
+        cursor:pointer;
           margin-top: 1rem;
           font-size: 1.1rem;
           font-weight: bold;
           padding: 0 1rem;
         }
         .book-subtitle {
+        cursor:pointer;
           margin-top: 0.5rem;
           font-size: 0.9rem;
           color: #ccc;
