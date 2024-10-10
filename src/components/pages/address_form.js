@@ -16,14 +16,14 @@ const AddressForm = ({ addToCart }) => {
     email: '',
     mobileNumber: '',
     address: '',
-    paymentScreenshot: null
+    // paymentScreenshot: null  // Commented out
   });
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
-      [name]: files ? files[0] : value
+      [name]: value
     }));
   };
 
@@ -43,11 +43,9 @@ const AddressForm = ({ addToCart }) => {
     setShowMessage(false);
     
     const templateParams = {
-      from_email: formData.email,
-      from_name: formData.email,
       book_name: formData.bookName,
       book_price: formData.bookPrice,
-      customer_email: formData.email,
+      customer_email: formData.email || 'Not provided',
       customer_mobile: formData.mobileNumber,
       customer_address: formData.address,
     };
@@ -90,13 +88,12 @@ const AddressForm = ({ addToCart }) => {
           <input type="text" name="bookPrice" value={formData.bookPrice} readOnly required />
         </div>
         <div className="form-group">
-          <label>Email:</label>
+          <label>Email (Optional):</label>
           <input 
             type="email" 
             name="email" 
             value={formData.email} 
             onChange={handleChange}
-            required 
           />
         </div>
         <div className="form-group">
@@ -120,6 +117,7 @@ const AddressForm = ({ addToCart }) => {
             required 
           />
         </div>
+        {/* Commented out screenshot input
         <div className="form-group">
           <label>Screenshot of Payment:</label>
           <input 
@@ -130,6 +128,7 @@ const AddressForm = ({ addToCart }) => {
             required 
           />
         </div>
+        */}
         <button type="submit" className="submit-button">Submit Order</button>
       </form>
     </div>
