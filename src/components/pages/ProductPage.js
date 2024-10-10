@@ -124,14 +124,6 @@ const ProductPage = ({ addToCart }) => {
           alt={currentBook.title}
           className="carousel-image"
         />
-        <div className="buttons-container">
-          <button className="nav-button prev" onClick={handlePrev} aria-label="Previous book">
-            ❮ 
-          </button>
-          <button className="nav-button next" onClick={handleNext} aria-label="Next book">
-            ❯
-          </button>
-        </div>
       </div>
 
       <div className="product-details">
@@ -164,6 +156,15 @@ const ProductPage = ({ addToCart }) => {
         </div>
       </div>
 
+      <div className="navigation-buttons">
+        <button className="nav-button prev" onClick={handlePrev} aria-label="Previous book">
+          ❮ Previous
+        </button>
+        <button className="nav-button next" onClick={handleNext} aria-label="Next book">
+          Next ❯
+        </button>
+      </div>
+
       <style jsx>{`
         .container {
           display: flex;
@@ -172,51 +173,20 @@ const ProductPage = ({ addToCart }) => {
           padding: 2rem;
           background-color: #000;
           color: #fff;
+          min-height: 100vh;
+          position: relative;
         }
 
         .image-carousel {
-          position: relative;
           width: 100%;
           max-width: 300px;
           margin-bottom: 2rem;
-          display: flex;
-          flex-direction: column;
         }
 
         .carousel-image {
           width: 100%;
           height: auto;
           object-fit: contain;
-          margin-bottom: 1rem;
-        }
-
-        .buttons-container {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-        }
-
-        .nav-button {
-          background-color: rgba(0, 0, 0, 0.5);
-          color: white;
-          border: none;
-          padding: 0.5rem 1rem;
-          cursor: pointer;
-          font-size: 1rem;
-          transition: background-color 0.3s;
-          flex: 1;
-        }
-
-        .nav-button:hover {
-          background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .prev {
-          margin-right: 0.5rem;
-        }
-
-        .next {
-          margin-left: 0.5rem;
         }
 
         .product-details {
@@ -281,6 +251,7 @@ const ProductPage = ({ addToCart }) => {
           display: flex;
           flex-direction: column;
           gap: 1rem;
+          margin-bottom: 2rem;
         }
 
         .grab-button, .try-button {
@@ -305,6 +276,29 @@ const ProductPage = ({ addToCart }) => {
           opacity: 0.9;
         }
 
+        .navigation-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-top: auto;
+          padding-top: 2rem;
+          width: 100%;
+        }
+
+        .nav-button {
+          background-color: rgba(0, 0, 0, 0.5);
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: background-color 0.3s;
+        }
+
+        .nav-button:hover {
+          background-color: rgba(0, 0, 0, 0.8);
+        }
+
         .popup-message {
           position: fixed;
           top: 20px;
@@ -326,7 +320,8 @@ const ProductPage = ({ addToCart }) => {
         @media (min-width: 768px) {
           .container {
             flex-direction: row;
-            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
           }
 
           .image-carousel {
@@ -340,6 +335,11 @@ const ProductPage = ({ addToCart }) => {
 
           .type-selection, .button-container {
             justify-content: flex-start;
+          }
+
+          .navigation-buttons {
+            position: absolute;
+            bottom: 2rem;
           }
         }
       `}</style>
