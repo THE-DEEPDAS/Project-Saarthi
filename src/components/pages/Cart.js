@@ -153,7 +153,6 @@ const Cart = ({ cart = [] }) => {
                 />
                 <div className="recommendation-details">
                   <h3>{book.title}</h3>
-                  
                   <p>Price: {book.price}</p>
                 </div>
               </div>
