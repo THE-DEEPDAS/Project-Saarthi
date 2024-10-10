@@ -111,11 +111,11 @@ html, body {
     justify-content: flex-start; /* Ensures the image starts at the left within the flex container */
     align-items: flex-start; /* Keeps the image aligned at the top inside the banner */
     position: fixed; /* Fixes the position relative to the viewport */
-    right: 8vw; /* Positions the banner at the right side */
-    bottom: 8vw; /* Positions the banner at the bottom of the page */
+    left: 8vw; /* Positions the banner at the right side */
+    bottom: 10vh; /* Positions the banner at the bottom of the page */
     margin: 0;
     z-index: 10; /* Ensures the banner stays on top of other content if needed */
-    transform: rotate(15deg);
+    transform: rotate(-15deg);
 }
 
 .bannerimg {
@@ -142,8 +142,8 @@ html, body {
 @media (max-width: 768px) {
     .banner {
         width: 40%;
-        right: 3vw; /* Positions the banner at the right side */
-        bottom: 18vw;
+        left: 3vw; /* Positions the banner at the right side */
+        bottom: 18vh;
     }
 
     .bannerimg {
@@ -156,8 +156,8 @@ html, body {
 @media (max-width: 480px) {
     .banner {
         width: 60%;
-        right: 5vw; /* Positions the banner at the right side */
-        bottom: 30vw;
+        left: 5vw; /* Positions the banner at the right side */
+        bottom: 24vh;
     }
 
     .bannerimg {
