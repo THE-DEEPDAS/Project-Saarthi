@@ -1,21 +1,24 @@
 import React from 'react';
 import page6Image from './images/page6.png';
-//import BottomLeftImage from './images/Bottom-left.png';
-//import BottomRightImage from './images/Bottom-right.png';
-//import TopImage from './images/top.png';
+import BottomLeftImage from './images/Bottom-left.png';
+import BottomRightImage from './images/Bottom-right.png';
+import TopImage from './images/top.png';
 import readyToWorkImage from './images/Ready to work with us.png';
 import './ui/About.css';
 
 const About = () => {
   return (
     <div className='main'>
-      {/* Page 1 */}
+      {/* Page 1 
       <div className='page1' style={{ backgroundImage: `url(${readyToWorkImage})` }}>
         <div className='page1_maintext'>
           Bridging the gap between students and essential learning resources.
         </div>
       </div>
 
+      */}
+
+      
       {/* Page 2: About Us */}
       <div className='page2'>
         <div className='page2_maintext'>
@@ -75,7 +78,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Page 5: What We've Done 
+      {/* Page 5: What We've Done */}
       
       <div class="page5">
           <div class="page5_maintext">Revolutionizing education by bridging the gap between students and essential learning resources.</div>
@@ -85,7 +88,7 @@ const About = () => {
 
       </div>
       
-      */}
+      
       
 
 
