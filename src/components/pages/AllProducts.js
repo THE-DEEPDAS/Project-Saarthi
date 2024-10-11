@@ -42,6 +42,9 @@ export default function AllProducts() {
 
   const handleBookClick = (book) => {
     navigate('/product', { state: { selectedBook: book, allBooks: books } });
+    if (booksRef.current) {
+      booksRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const categoryCards = [
@@ -171,18 +174,18 @@ export default function AllProducts() {
           transition: transform 0.2s ease-in-out;
         }
         .book:hover {
-        cursor:pointer;
+          cursor: pointer;
           transform: scale(1.05);
         }
         .book-image-container {
-        cursor:pointer;
+          cursor: pointer;
           width: 100%;
           padding-top: 141.42%; /* Aspect ratio of 1:√2 (common for book covers) */
           position: relative;
           overflow: hidden;
         }
         .book-image {
-        cursor:pointer;
+          cursor: pointer;
           position: absolute;
           top: 0;
           left: 0;
@@ -191,14 +194,14 @@ export default function AllProducts() {
           object-fit: cover;
         }
         .book-title {
-        cursor:pointer;
+          cursor: pointer;
           margin-top: 1rem;
           font-size: 1.1rem;
           font-weight: bold;
           padding: 0 1rem;
         }
         .book-subtitle {
-        cursor:pointer;
+          cursor: pointer;
           margin-top: 0.5rem;
           font-size: 0.9rem;
           color: #ccc;
