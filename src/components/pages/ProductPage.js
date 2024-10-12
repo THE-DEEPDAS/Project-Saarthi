@@ -356,10 +356,4 @@ export default function ProductPage({ addToCart }) {
       `}</style>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-};
-
-export default ProductPage;
->>>>>>> 17c0627488d422ffecc0289e47a23216690db81c

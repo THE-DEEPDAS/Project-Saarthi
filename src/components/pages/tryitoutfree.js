@@ -9,7 +9,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
-export default function TryForFreePage({ addToCart }) {
+export default function TryForFreePage() {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [pageWidth, setPageWidth] = useState(null);
@@ -48,14 +48,7 @@ export default function TryForFreePage({ addToCart }) {
   }, [pageNumber]);
 
   const handleBuyNow = () => {
-    const book = {
-      id: parseInt(bookId),
-      title: 'Class 12 Board Physics',
-      price: '₹199',
-      type: 'E-Book'
-    };
-    addToCart(book);
-    navigate('/cart');
+    navigate(`/product/${bookId}`);
   };
 
   const handlePrevPage = () => {
