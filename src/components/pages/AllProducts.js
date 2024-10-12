@@ -83,7 +83,7 @@ export default function AllProducts() {
           <button 
             key={index} 
             className={`card ${index > 0 ? 'coming-soon' : ''}`}
-            onClick={() => handleCategoryClick(index, card.title)}
+            onClick={() => handleCategoryClick(index, card)}
           >
             <h3>{card.title}</h3>
             <p>{card.description}</p>
