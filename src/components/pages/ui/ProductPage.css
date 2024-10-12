@@ -9,12 +9,12 @@ body {
 .container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; /* Change to flex-start to allow buttons to be at the bottom */
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    height: 100vh; /* Set height to viewport for vertical centering */
+    height: auto; /* Change height to auto for better responsiveness */
     flex-wrap: wrap; /* Enable wrapping for smaller screens */
     background-color: #000;
     color: #fff;
@@ -311,4 +311,54 @@ body {
     padding: 8px 16px;
     font-size: 0.8rem;
   }
+}
+
+/* Add a new class for the navigation buttons container */
+.navigation-buttons {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    margin-top: 20px; /* Add some space above the buttons */
+    width: 100%; /* Full width */
+}
+
+/* Adjust button styles */
+.nav-button {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    padding: 10px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 15%;
+    margin: 0 10px; /* Space between buttons */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 10;
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Change background on hover */
+}
+
+/* Media query for smaller screen sizes */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+        height: auto; /* Allow height to adjust */
+    }
+
+    .navigation-buttons {
+        margin-top: 20px; /* Space above buttons */
+    }
+
+    .nav-button {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        padding: 8px 16px; /* Adjust padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-button {
+        font-size: 0.9rem; /* Further adjust font size for very small screens */
+        padding: 6px 12px; /* Further adjust padding */
+    }
 }
