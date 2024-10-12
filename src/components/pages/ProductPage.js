@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import "./ui/ProductPage.css";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import class_12_board_physics from './images/class 12 board physics.png'
 import class_12_board_chemistry from './images/class 12 board chemistry.png'
 import class_12_board_biology from './images/class 12 board biology.png'
-
-const ProductPage = ({ addToCart }) => {
+import './ui/ProductPage.css'
+export default function ProductPage({ addToCart }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { bookId } = useParams();
   const { selectedBook, allBooks } = location.state || {};
   const [currentBookIndex, setCurrentBookIndex] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
@@ -44,11 +44,14 @@ const ProductPage = ({ addToCart }) => {
   ];
 
   useEffect(() => {
-    if (selectedBook) {
+    if (bookId) {
+      const index = books.findIndex(book => book.id === parseInt(bookId));
+      setCurrentBookIndex(index !== -1 ? index : 0);
+    } else if (selectedBook) {
       const index = books.findIndex(book => book.id === selectedBook.id);
       setCurrentBookIndex(index !== -1 ? index : 0);
     }
-  }, [selectedBook, books]);
+  }, [selectedBook, books, bookId]);
 
   const currentBook = books[currentBookIndex];
 
@@ -89,35 +92,40 @@ const ProductPage = ({ addToCart }) => {
       return;
     }
 
-    if (selectedTypes.physicalCopy) {
-      navigate('/address-form', { 
-        state: { 
-          book: { 
-            ...currentBook, 
-            type: selectedTypes.eBook ? 'Both' : 'Physical Copy',
-            price: calculatePrice()
-          } 
-        } 
-      });
-    } else {
-      addToCart({ ...currentBook, type: 'E-Book', price: currentBook.eBookPrice });
-      setShowMessage(true);
-      setTimeout(() => {
-        setShowMessage(false);
-        navigate('/cart');
-      }, 2000);
-    }
+    const bookType = selectedTypes.eBook && selectedTypes.physicalCopy ? 'Both' :
+                     selectedTypes.eBook ? 'E-Book' : 'Physical Copy';
+
+    addToCart({ 
+      ...currentBook, 
+      type: bookType, 
+      price: calculatePrice()
+    });
+
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+      navigate('/cart');
+    }, 2000);
   };
 
   const handleTryForFree = () => {
-    console.log("Try it out for free clicked for", currentBook.title);
+    if (currentBook.id === 1) {
+      navigate(`/try-for-free/${currentBook.id}`);
+    } else {
+      setShowMessage(true);
+      setTimeout(() => setShowMessage(false), 2000);
+    }
   };
 
   return (
     <div className="container">
       {showMessage && (
         <div className={`popup-message ${showMessage ? "show" : "hide"}`}>
-          {selectedTypes.eBook || selectedTypes.physicalCopy ? "E-Book added to cart!" : "Please select a book type"}
+          {selectedTypes.eBook || selectedTypes.physicalCopy 
+            ? "Added to cart!" 
+            : currentBook.id === 1 
+              ? "Redirecting to try for free page..." 
+              : "Try for free is only available for Physics book"}
         </div>
       )}
 
@@ -151,7 +159,7 @@ const ProductPage = ({ addToCart }) => {
         </div>
         <div className="button-container">
           <button className="grab-button" onClick={handlePurchase}>
-            ADD TO CART
+            BUY NOW
           </button>
           <button className="try-button" onClick={handleTryForFree}>
             Try it out for free
@@ -348,6 +356,4 @@ const ProductPage = ({ addToCart }) => {
       `}</style>
     </div>
   );
-};
-
-export default ProductPage;
+}

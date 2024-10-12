@@ -11,7 +11,7 @@ import Allproducts from "./components/pages/AllProducts";
 import AuthPages from './components/pages/AuthPages';
 import Testimonials from "./components/pages/Testimonials";
 import AddressForm from './components/pages/address_form';
-
+import TryForFreePage from "./components/pages/tryitoutfree";
 // just a comment
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -57,6 +57,7 @@ const App = () => {
           path='/about'
           element={<About />} 
         />
+        <Route path="/try-for-free/:bookId" element={<TryForFreePage />} />
         <Route path="/address-form" element={<AddressForm addToCart={addToCart} />} />
       </Routes>
     </Router>
