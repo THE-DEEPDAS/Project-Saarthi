@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./ui/ProductPage.css";
+import class_12_board_physics from './images/class 12 board physics.png'
+import class_12_board_chemistry from './images/class 12 board chemistry.png'
+import class_12_board_biology from './images/class 12 board biology.png'
 
 const ProductPage = ({ addToCart }) => {
   const navigate = useNavigate();
@@ -20,7 +23,7 @@ const ProductPage = ({ addToCart }) => {
       description: "Comprehensive guide for Class 12 Board Physics",
       eBookPrice: "₹449",
       physicalPrice: "₹599",
-      images: ["/placeholder.svg?height=400&width=300"]
+      images: [class_12_board_physics]
     },
     {
       id: 2,
@@ -28,7 +31,7 @@ const ProductPage = ({ addToCart }) => {
       description: "In-depth study material for Class 12 Board Chemistry",
       eBookPrice: "₹499",
       physicalPrice: "₹649",
-      images: ["/placeholder.svg?height=400&width=300"]
+      images: [class_12_board_chemistry]
     },
     {
       id: 3,
@@ -36,7 +39,7 @@ const ProductPage = ({ addToCart }) => {
       description: "Complete solution for Class 12 Board Biology",
       eBookPrice: "₹549",
       physicalPrice: "₹699",
-      images: ["/placeholder.svg?height=400&width=300"]
+      images: [class_12_board_biology]
     }
   ];
 

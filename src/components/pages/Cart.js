@@ -7,7 +7,7 @@ const allBooks = [
     title: 'Class 12 Board Physics', 
     subtitle: 'Class 12', 
     category: 'Board', 
-    price: '₹399', 
+    price: '₹199', 
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(149)-EaiSODwIzWWyQg9oLdFkroQ2lyge6l.png', 
     description: 'Class 12 Board Physics Book' 
   },
@@ -16,7 +16,7 @@ const allBooks = [
     title: 'Class 12 Board Chemistry', 
     subtitle: 'Class 12', 
     category: 'Board', 
-    price: '₹449', 
+    price: '₹199', 
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(147)-QHmVjrTqVKLMBnVsHKgDka1lRd3vXF.png', 
     description: 'Class 12 Board Chemistry Book' 
   },
@@ -25,7 +25,7 @@ const allBooks = [
     title: 'Class 12 Board Biology', 
     subtitle: 'Class 12', 
     category: 'Board', 
-    price: '₹499', 
+    price: '₹199', 
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(148)-q2hsE6nuXZTxdmv8t4AU2E4tpxAfgT.png', 
     description: 'Class 12 Board Biology Book' 
   },
@@ -36,11 +36,9 @@ const Cart = ({ cart = [] }) => {
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
-      // For physical books, use the price from the item itself
-      // For digital books, use the price from allBooks
       const price = item.type === 'Physical Copy' 
         ? parseFloat(item.price.replace('₹', ''))
-        : parseFloat(allBooks.find(book => book.id === item.id)?.price.replace('₹', '') || '0');
+        : 199; // All e-books are now 199 INR
       return total + price;
     }, 0);
   };
@@ -95,7 +93,7 @@ const Cart = ({ cart = [] }) => {
                   />
                   <div className="cart-item-details">
                     <h3>{book.title}</h3>
-                    <p>Price: {item.type === 'Physical Copy' ? item.price : book.price}</p>
+                    <p>Price: {item.type === 'Physical Copy' ? item.price : '₹199'}</p>
                     {item.type && <p>Type: {item.type}</p>}
                     {item.status && <p>Status: {item.status}</p>}
                   </div>
@@ -160,7 +158,7 @@ const Cart = ({ cart = [] }) => {
                 />
                 <div className="recommendation-details">
                   <h3>{book.title}</h3>
-                  <p>Price: {book.price}</p>
+                  <p>Price: ₹199</p>
                 </div>
               </div>
             ))}

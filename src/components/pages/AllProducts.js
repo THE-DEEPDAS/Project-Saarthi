@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ui/AllProducts.css';
 import class_12_board_physics from './images/class 12 board physics.png'
+import class_12_board_chemistry from './images/class 12 board chemistry.png'
+import class_12_board_biology from './images/class 12 board biology.png'
 
 const books = [
   { 
@@ -21,7 +23,7 @@ const books = [
     category: 'Class 12', 
     eBookPrice: '₹199', 
     physicalPrice: '₹699', 
-    images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(147)-1q4Wl115EEQ37QdqM0tX5rKPi58GZf.png'], 
+    images: [class_12_board_chemistry], 
     description: 'In-depth study material for Class 12 Board Chemistry' 
   },
   { 
@@ -31,7 +33,7 @@ const books = [
     category: 'Class 12', 
     eBookPrice: '₹199', 
     physicalPrice: '₹699', 
-    images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(148)-vjAPMwLTAD1IkwVYHkn5HHSfID33N1.png'], 
+    images: [class_12_board_biology], 
     description: 'Essential Biology concepts for Class 12 Board' 
   },
 ];
