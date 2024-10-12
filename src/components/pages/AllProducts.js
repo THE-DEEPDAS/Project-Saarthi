@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ui/AllProducts.css';
+import class_12_board_physics from './images/class 12 board physics.png'
 
 const books = [
   { 
@@ -10,7 +11,7 @@ const books = [
     category: 'Class 12', 
     eBookPrice: '₹199', 
     physicalPrice: '₹699', 
-    images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(149)-mUz9DSdxsjo3o8GSohtQNdyUjmnHs5.png'], 
+    images: [class_12_board_physics], 
     description: 'Comprehensive guide for Class 12 Board Physics' 
   },
   { 
