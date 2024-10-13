@@ -157,7 +157,7 @@ html, body {
     .banner {
         width: 60%;
         left: 5vw; /* Positions the banner at the right side */
-        bottom: 24vh;
+        bottom: 18vh;
     }
 
     .bannerimg {
