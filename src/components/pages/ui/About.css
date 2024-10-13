@@ -59,7 +59,7 @@
 /* PAGE 2 */
 
 .page2 {
-    background-color: #06002e;  
+    background-color: #131722;  
     display: flex;
     flex-direction: column;
     justify-content: flex-start; 
@@ -183,7 +183,7 @@
 
 /* PAGE 4*/
 .page4 {
-    background: linear-gradient(75deg, #0c0829, #79763c);  
+    background: linear-gradient(75deg, #131722, #88743f);  
     position: relative;
     height: 100vh;
     display: flex;
@@ -434,4 +434,27 @@
     }
 }
 
+
+.floating-button {
+    position: fixed;
+    right: 2vw; /* Adjust this to control how far from the right edge the button should be */
+    top: 40%; /* Vertical center */
+    transform: translateY(-50%); /* Align to exact center */
+    padding: 10px 20px;
+    background-color: #007bff; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 8vw;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Make sure it stays on top */
+    height: fit-content;
+    width: fit-content;
+    font-size: clamp(1.5rem,2%,5rem);
+  }
+  
+  .floating-button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+  }
+  
 
