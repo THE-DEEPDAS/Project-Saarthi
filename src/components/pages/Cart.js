@@ -31,20 +31,30 @@ const allBooks = [
   },
 ];
 
-const Cart = ({ cart = [] }) => {
+const Cart = () => {
+  const [cart, setCart] = useState([
+    { id: 1, type: 'Physical Copy', status: 'New' },
+    { id: 2, type: 'E-book', status: 'Used' }
+  ]); // Example initial cart items
   const [paymentMethod, setPaymentMethod] = useState('');
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
+      const priceString = item.price || '₹199'; // Fallback to '₹199' if price is undefined
       const price = item.type === 'Physical Copy' 
-        ? parseFloat(item.price.replace('₹', ''))
-        : 199; // All e-books are now 199 INR
+        ? parseFloat(priceString.replace('₹', ''))
+        : 199; // All e-books are 199 INR by default
       return total + price;
     }, 0);
   };
+  
 
   const handleCheckout = () => {
     console.log('Checkout with', paymentMethod);
+  };
+
+  const handleRemove = (id) => {
+    setCart(cart.filter(item => item.id !== id)); // Remove item by id
   };
 
   const getRecommendations = () => {
@@ -96,6 +106,7 @@ const Cart = ({ cart = [] }) => {
                     <p>Price: {item.type === 'Physical Copy' ? item.price : '₹199'}</p>
                     {item.type && <p>Type: {item.type}</p>}
                     {item.status && <p>Status: {item.status}</p>}
+                    <button onClick={() => handleRemove(item.id)}>Remove</button> {/* Remove button */}
                   </div>
                 </div>
               );
