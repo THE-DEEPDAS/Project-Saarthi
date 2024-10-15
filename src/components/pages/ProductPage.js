@@ -4,7 +4,8 @@ import class_12_board_physics from './images/class 12 board physics.png'
 import class_12_board_chemistry from './images/class 12 board chemistry.png'
 import class_12_board_biology from './images/class 12 board biology.png'
 import './ui/ProductPage.css'
-export default function ProductPage({ addToCart }) {
+
+export default function ProductPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { bookId } = useParams();
@@ -85,7 +86,7 @@ export default function ProductPage({ addToCart }) {
     return total === 0 ? currentBook.eBookPrice : `₹${total}`;
   };
 
-  const handlePurchase = () => {
+  const addToCart = () => {
     if (!selectedTypes.eBook && !selectedTypes.physicalCopy) {
       setShowMessage(true);
       setTimeout(() => setShowMessage(false), 2000);
@@ -95,11 +96,24 @@ export default function ProductPage({ addToCart }) {
     const bookType = selectedTypes.eBook && selectedTypes.physicalCopy ? 'Both' :
                      selectedTypes.eBook ? 'E-Book' : 'Physical Copy';
 
-    addToCart({ 
-      ...currentBook, 
+    const cartItem = { 
+      id: currentBook.id,
+      title: currentBook.title,
+      description: currentBook.description,
+      image: currentBook.images[0],
       type: bookType, 
-      price: calculatePrice()
-    });
+      price: calculatePrice(),
+      status: 'In Cart'
+    };
+
+    // Get existing cart from localStorage
+    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Add new item to cart
+    const updatedCart = [...existingCart, cartItem];
+    
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
 
     setShowMessage(true);
     setTimeout(() => {
@@ -158,7 +172,7 @@ export default function ProductPage({ addToCart }) {
           </button>
         </div>
         <div className="button-container">
-          <button className="grab-button" onClick={handlePurchase}>
+          <button className="grab-button" onClick={addToCart}>
             BUY NOW
           </button>
           <button className="try-button" onClick={handleTryForFree}>
@@ -175,185 +189,6 @@ export default function ProductPage({ addToCart }) {
           Next ❯
         </button>
       </div>
-
-      <style jsx>{`
-        .container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 2rem;
-          background-color: #000;
-          color: #fff;
-          min-height: 100vh;
-          position: relative;
-        }
-
-        .image-carousel {
-          width: 100%;
-          max-width: 300px;
-          margin-bottom: 2rem;
-        }
-
-        .carousel-image {
-          width: 100%;
-          height: auto;
-          object-fit: contain;
-        }
-
-        .product-details {
-          width: 100%;
-          max-width: 600px;
-          text-align: center;
-        }
-
-        h1 {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-          color: #8b5cf6;
-        }
-
-        p {
-          margin-bottom: 1rem;
-        }
-
-        h2 {
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-          color: #f43f5e;
-        }
-
-        .type-selection {
-          display: flex;
-          justify-content: center;
-          gap: 1rem;
-          margin-bottom: 1rem;
-        }
-
-        .type-button {
-          padding: 0.5rem 1rem;
-          border: 1px solid #8b5cf6;
-          background-color: transparent;
-          color: #8b5cf6;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          transition: all 0.3s ease;
-        }
-
-        .type-button.selected {
-          background-color: #8b5cf6;
-          color: #fff;
-        }
-
-        .type-button.deselected {
-          background-color: #000;
-          color: #8b5cf6;
-        }
-
-        .dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background-color: currentColor;
-        }
-
-        .button-container {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          margin-bottom: 2rem;
-        }
-
-        .grab-button, .try-button {
-          padding: 1rem;
-          border: none;
-          cursor: pointer;
-          font-size: 1rem;
-          transition: background-color 0.3s;
-        }
-
-        .grab-button {
-          background-color: #f97316;
-          color: #fff;
-        }
-
-        .try-button {
-          background-color: #4b5563;
-          color: #fff;
-        }
-
-        .grab-button:hover, .try-button:hover {
-          opacity: 0.9;
-        }
-
-        .navigation-buttons {
-          display: flex;
-          justify-content: center;
-          gap: 1rem;
-          margin-top: auto;
-          padding-top: 2rem;
-          width: 100%;
-        }
-
-        .nav-button {
-          background-color: rgba(0, 0, 0, 0.5);
-          color: white;
-          border: none;
-          padding: 0.5rem 1rem;
-          cursor: pointer;
-          font-size: 1rem;
-          transition: background-color 0.3s;
-        }
-
-        .nav-button:hover {
-          background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .popup-message {
-          position: fixed;
-          top: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          background-color: #4b5563;
-          color: white;
-          padding: 1rem;
-          border-radius: 5px;
-          z-index: 1000;
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
-
-        .popup-message.show {
-          opacity: 1;
-        }
-
-        @media (min-width: 768px) {
-          .container {
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-          }
-
-          .image-carousel {
-            margin-right: 2rem;
-            margin-bottom: 0;
-          }
-
-          .product-details {
-            text-align: left;
-          }
-
-          .type-selection, .button-container {
-            justify-content: flex-start;
-          }
-
-          .navigation-buttons {
-            position: absolute;
-            bottom: 2rem;
-          }
-        }
-      `}</style>
     </div>
   );
 }

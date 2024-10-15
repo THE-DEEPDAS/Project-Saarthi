@@ -1,60 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ui/Cart.css';
 
-const allBooks = [
-  { 
-    id: 1, 
-    title: 'Class 12 Board Physics', 
-    subtitle: 'Class 12', 
-    category: 'Board', 
-    price: '₹199', 
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(149)-EaiSODwIzWWyQg9oLdFkroQ2lyge6l.png', 
-    description: 'Class 12 Board Physics Book' 
-  },
-  { 
-    id: 2, 
-    title: 'Class 12 Board Chemistry', 
-    subtitle: 'Class 12', 
-    category: 'Board', 
-    price: '₹199', 
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(147)-QHmVjrTqVKLMBnVsHKgDka1lRd3vXF.png', 
-    description: 'Class 12 Board Chemistry Book' 
-  },
-  { 
-    id: 3, 
-    title: 'Class 12 Board Biology', 
-    subtitle: 'Class 12', 
-    category: 'Board', 
-    price: '₹199', 
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20(148)-q2hsE6nuXZTxdmv8t4AU2E4tpxAfgT.png', 
-    description: 'Class 12 Board Biology Book' 
-  },
-];
-
 const Cart = () => {
-  const [cart, setCart] = useState([
-    { id: 1, type: 'Physical Copy', status: 'New' },
-    { id: 2, type: 'E-book', status: 'Used' }
-  ]); // Example initial cart items
+  const [cart, setCart] = useState([]);
   const [paymentMethod, setPaymentMethod] = useState('');
+
+  useEffect(() => {
+    // Load cart from localStorage when component mounts
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCart(savedCart);
+  }, []);
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
-      const priceString = item.price || '₹199'; // Fallback to '₹199' if price is undefined
-      const price = item.type === 'Physical Copy' 
-        ? parseFloat(priceString.replace('₹', ''))
-        : 199; // All e-books are 199 INR by default
+      const price = parseFloat(item.price.replace('₹', ''));
       return total + price;
     }, 0);
   };
-  
 
   const handleCheckout = () => {
     console.log('Checkout with', paymentMethod);
   };
 
-  const handleRemove = (id) => {
-    setCart(cart.filter(item => item.id !== id)); // Remove item by id
+  const removeFromCart = (id) => {
+    const updatedCart = cart.filter(item => item.id !== id);
+    setCart(updatedCart);
+    // Update localStorage
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
   const getRecommendations = () => {
@@ -62,17 +34,17 @@ const Cart = () => {
   
     const recommendations = [];
     const cartItems = new Set(cart.map(item => item.id));
-    const physicsBook = allBooks.find(book => book.title.includes('Physics'));
+    const physicsBook = cart.find(book => book.title.includes('Physics'));
   
-    if (cartItems.has(physicsBook.id)) {
-      allBooks.forEach(book => {
-        if (book.subtitle === 'Class 12' && !book.title.includes('Physics') && !cartItems.has(book.id)) {
+    if (physicsBook) {
+      cart.forEach(book => {
+        if (book.title.includes('Class 12') && !book.title.includes('Physics') && !cartItems.has(book.id)) {
           recommendations.push(book);
         }
       });
     } else {
-      allBooks.forEach(book => {
-        if (!cartItems.has(book.id) && book.subtitle === 'Class 12') {
+      cart.forEach(book => {
+        if (!cartItems.has(book.id) && book.title.includes('Class 12')) {
           recommendations.push(book);
         }
       });
@@ -91,26 +63,23 @@ const Cart = () => {
           <p>Your cart is empty</p>
         ) : (
           <div className="cart-items">
-            {cart.map((item, index) => {
-              const book = allBooks.find(book => book.id === item.id) || item;
-              return (
-                <div key={index} className="cart-item">
-                  <img 
-                    src={book.image} 
-                    alt={book.title} 
-                    className="cart-item-image" 
-                    style={{ width: '200px', height: '250px', objectFit: 'cover' }}
-                  />
-                  <div className="cart-item-details">
-                    <h3>{book.title}</h3>
-                    <p>Price: {item.type === 'Physical Copy' ? item.price : '₹199'}</p>
-                    {item.type && <p>Type: {item.type}</p>}
-                    {item.status && <p>Status: {item.status}</p>}
-                    <button onClick={() => handleRemove(item.id)}>Remove</button> {/* Remove button */}
-                  </div>
+            {cart.map((item, index) => (
+              <div key={index} className="cart-item">
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  className="cart-item-image" 
+                  style={{ width: '200px', height: '250px', objectFit: 'cover' }}
+                />
+                <div className="cart-item-details">
+                  <h3>{item.title}</h3>
+                  <p>Price: {item.price}</p>
+                  {item.type && <p>Type: {item.type}</p>}
+                  {item.status && <p>Status: {item.status}</p>}
+                  <button onClick={() => removeFromCart(item.id)} className="remove-button">Remove</button>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -169,7 +138,7 @@ const Cart = () => {
                 />
                 <div className="recommendation-details">
                   <h3>{book.title}</h3>
-                  <p>Price: ₹199</p>
+                  <p>Price: {book.price}</p>
                 </div>
               </div>
             ))}
