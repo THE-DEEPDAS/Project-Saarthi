@@ -106,6 +106,13 @@ export default function ProductPage() {
       status: 'In Cart'
     };
 
+    // Check if physical copy is selected
+    if (selectedTypes.physicalCopy) {
+      // Redirect to address form
+      navigate('/address-form');
+      return; // Prevent adding to cart
+    }
+
     // Get existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
     
