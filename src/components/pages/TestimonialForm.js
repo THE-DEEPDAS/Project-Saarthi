@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import './ui/TestimonialForm.css'
+import React, { useState } from 'react';
+import './ui/TestimonialForm.css';
 
 export default function TestimonialForm({ onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
@@ -8,17 +8,35 @@ export default function TestimonialForm({ onSubmit, onCancel }) {
     class: '',
     comment: '',
     rating: 5
-  })
+  });
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    onSubmit(formData)
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/testimonials', { // Updated URL
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to submit testimonial');
+      }
+  
+      const result = await response.json();
+      console.log('Testimonial submitted:', result);
+      onSubmit(result); // Optionally call onSubmit with the response data
+    } catch (error) {
+      console.error('Error submitting testimonial:', error);
+    }
+  };  
 
   return (
     <form className="testimonial-form" onSubmit={handleSubmit}>
@@ -84,5 +102,5 @@ export default function TestimonialForm({ onSubmit, onCancel }) {
         <button type="button" onClick={onCancel}>Cancel</button>
       </div>
     </form>
-  )
+  );
 }

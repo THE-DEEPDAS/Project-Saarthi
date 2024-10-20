@@ -7,25 +7,24 @@ export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showForm, setShowForm] = useState(false);
 
+  // Fetch testimonials from the backend
   useEffect(() => {
-    const initialTestimonials = [
-      { id: 1, name: "Deep Das", institution: "Tech University", class: "12th", comment: "Great product!", rating: 5 },
-      { id: 2, name: "Hitarth Shah", institution: "Design School", class: "11th", comment: "Very useful tool.", rating: 4 },
-      { id: 3, name: "John Doe", institution: "ABC College", class: "10th", comment: "Excellent service!", rating: 5 },
-      { id: 4, name: "Jane Smith", institution: "XYZ School", class: "12th", comment: "Highly recommended.", rating: 4 },
-      { id: 5, name: "Alice Johnson", institution: "123 High School", class: "11th", comment: "Top-notch quality.", rating: 5 },
-      { id: 6, name: "Bob Brown", institution: "Tech Institute", class: "10th", comment: "Fantastic experience!", rating: 5 },
-      { id: 7, name: "Sara White", institution: "Innovate Academy", class: "12th", comment: "Loved it!", rating: 4 },
-    ];
-    setTestimonials(initialTestimonials);
+    fetch('http://localhost:5000/testimonials')
+      .then(response => response.json())
+      .then(data => {
+        setTestimonials(data);
+      })
+      .catch(error => {
+        console.error('Error fetching testimonials:', error);
+      });
   }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % 5);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 6000);
     return () => clearInterval(interval);
-  }, [testimonials.length]);
+  }, [testimonials]);
 
   const addTestimonial = (newTestimonial) => {
     const updatedTestimonials = [
@@ -45,7 +44,7 @@ export default function Testimonials() {
       <h2>Customer Testimonials</h2>
       <div className="testimonials-grid" style={{ transform: `translateX(-${currentIndex * 20}%)` }}>
         {testimonials.map((testimonial) => (
-          <div key={testimonial.id} className={`testimonial-card ${testimonial.active ? 'active' : ''}`}>
+          <div key={testimonial._id} className="testimonial-card">
             <div className="testimonial-header">
               <h3>{testimonial.name}</h3>
               <p>{testimonial.institution} - {testimonial.class}</p>
@@ -60,7 +59,7 @@ export default function Testimonials() {
         ))}
       </div>
       <div className="testimonial-dots">
-        {Array.from({ length: 5 }).map((_, index) => (
+        {Array.from({ length: testimonials.length }).map((_, index) => (
           <button
             key={index}
             className={`testimonial-dot ${index === currentIndex ? 'active' : ''}`}
