@@ -1,78 +1,127 @@
-import React, { useState, useEffect } from 'react'; // Import React and hooks for state and side effects
-import TestimonialForm from './TestimonialForm'; // Import the TestimonialForm component
-import './ui/Testimonials.css'; // Import the CSS file for styling
+import React, { useState, useEffect } from 'react';
+import TestimonialForm from './TestimonialForm';
+import './ui/Testimonials.css';
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState([]); // State to hold the array of testimonials
-  const [currentIndex, setCurrentIndex] = useState(0); // State to track the index of the currently displayed testimonial
-  const [showForm, setShowForm] = useState(false); // State to toggle the visibility of the testimonial form
+  const [testimonials, setTestimonials] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showForm, setShowForm] = useState(false);
 
-  // Fetch testimonials from the backend when the component mounts
   useEffect(() => {
-    fetch('http://localhost:5000/testimonials') // Make a GET request to the testimonials endpoint
-      .then(response => response.json()) // Parse the response as JSON
-      .then(data => {
-        setTestimonials(data); // Update state with the fetched testimonials
-      })
-      .catch(error => {
-        console.error('Error fetching testimonials:', error); // Log any errors that occur during the fetch
-      });
-  }, []); // Empty dependency array means this runs once on mount
+    const initialTestimonials = [
+      {
+        id: 1,
+        name: "Anjali Verma",
+        institution: "Delhi Public School, Delhi",
+        class: "12th",
+        comment: "The JEE preparation books provided here are incredibly comprehensive. They break down complex concepts into easy-to-understand segments, making it much easier to prepare. I scored well thanks to the focused study materials!",
+        rating: 5
+      },
+      {
+        id: 2,
+        name: "Suresh Rao",
+        institution: "St. Xavier's College, Mumbai",
+        class: "12th",
+        comment: "I found the NEET study guides to be extremely helpful. They covered all the necessary topics and offered plenty of practice questions. I felt fully prepared for the exam, and it truly made a difference in my performance.",
+        rating: 5
+      },
+      {
+        id: 3,
+        name: "Neha Patel",
+        institution: "Chinmaya Vidyalaya, Bangalore",
+        class: "11th",
+        comment: "The board exam revision books were well-structured and very easy to follow. The summaries at the end of each chapter helped me revise quickly before the exams. Highly recommended for anyone looking to excel!",
+        rating: 4
+      },
+      {
+        id: 4,
+        name: "Rahul Mehta",
+        institution: "MIT Pune",
+        class: "12th",
+        comment: "The physics and chemistry textbooks specifically designed for JEE were top-notch. They included detailed explanations, diagrams, and practice problems that closely resemble actual exam questions. I would definitely suggest these to any JEE aspirant.",
+        rating: 5
+      },
+      {
+        id: 5,
+        name: "Pooja Singh",
+        institution: "Kendriya Vidyalaya, Chandigarh",
+        class: "12th",
+        comment: "These NEET preparation books were a lifesaver! The clear explanations and practice tests made studying less stressful and much more effective. I appreciate the focus on the NEET syllabus, which helped me concentrate on the important topics.",
+        rating: 5
+      },
+      {
+        id: 6,
+        name: "Karan Joshi",
+        institution: "Bharati Vidyapeeth, Pune",
+        class: "12th",
+        comment: "The online resources and reference books for board exams are incredibly helpful. The mock tests are particularly beneficial for understanding the exam pattern and time management. It made a significant difference in my preparation.",
+        rating: 4
+      },
+      {
+        id: 7,
+        name: "Siddhi Desai",
+        institution: "Nirma University, Ahmedabad",
+        class: "12th",
+        comment: "I cannot thank you enough for the study materials for JEE! The logical explanations and the way topics are interlinked made it easy to grasp. These resources truly made my preparation journey smoother.",
+        rating: 5
+      },
+    ];
+    setTestimonials(initialTestimonials);
+  }, []);
+  
 
-  // Automatically change the displayed testimonial every 6 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length); // Cycle through testimonials
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % 5);
     }, 6000);
-    return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, [testimonials]); // Dependency on testimonials to reset the interval when testimonials change
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   const addTestimonial = (newTestimonial) => {
-    // Function to add a new testimonial to the state
     const updatedTestimonials = [
-      { ...newTestimonial, id: Date.now() }, // Add the new testimonial with a unique ID
+      { ...newTestimonial, id: Date.now() },
       ...testimonials
-    ].slice(0, 7); // Limit to the most recent 7 testimonials
-    setTestimonials(updatedTestimonials); // Update state with the new testimonials
-    setShowForm(false); // Hide the form after submission
+    ].slice(0, 7);
+    setTestimonials(updatedTestimonials);
+    setShowForm(false);
   };
 
   const handleDotClick = (index) => {
-    setCurrentIndex(index); // Set the current index when a dot is clicked
+    setCurrentIndex(index);
   };
 
   return (
-    <div className="testimonials-container"> {/* Container for the testimonials */}
-      <h2>Customer Testimonials</h2> {/* Title for the testimonials section */}
-      <div className="testimonials-grid" style={{ transform: `translateX(-${currentIndex * 20}%)` }}> {/* Grid for displaying testimonials */}
-        {testimonials.map((testimonial) => ( // Map through the testimonials array
-          <div key={testimonial._id} className="testimonial-card"> {/* Card for each testimonial */}
-            <div className="testimonial-header"> {/* Header section for the testimonial */}
-              <h3>{testimonial.name}</h3> {/* Display the name of the person */}
-              <p>{testimonial.institution} - {testimonial.class}</p> {/* Display institution and class */}
+    <div className="testimonials-container">
+      <h2>Customer Testimonials</h2>
+      <div className="testimonials-grid" style={{ transform: `translateX(-${currentIndex * 20}%)` }}>
+        {testimonials.map((testimonial) => (
+          <div key={testimonial.id} className={`testimonial-card ${testimonial.active ? 'active' : ''}`}>
+            <div className="testimonial-header">
+              <h3>{testimonial.name}</h3>
+              <p>{testimonial.institution} - {testimonial.class}</p>
             </div>
-            <p className="testimonial-comment">{testimonial.comment}</p> {/* Display the testimonial comment */}
-            <div className="testimonial-rating"> {/* Section for displaying the rating */}
-              {[...Array(5)].map((_, ratingIndex) => ( // Create stars based on the rating
-                <span key={ratingIndex} className={ratingIndex < testimonial.rating ? 'star filled' : 'star'}>★</span> // Conditional class for filled star
+            <p className="testimonial-comment">{testimonial.comment}</p>
+            <div className="testimonial-rating">
+              {[...Array(5)].map((_, ratingIndex) => (
+                <span key={ratingIndex} className={ratingIndex < testimonial.rating ? 'star filled' : 'star'}>★</span>
               ))}
             </div>
           </div>
         ))}
       </div>
-      <div className="testimonial-dots"> {/* Dots for navigating testimonials */}
-        {Array.from({ length: testimonials.length }).map((_, index) => ( // Create a dot for each testimonial
+      <div className="testimonial-dots">
+        {Array.from({ length: 5 }).map((_, index) => (
           <button
             key={index}
-            className={`testimonial-dot ${index === currentIndex ? 'active' : ''}`} // Add 'active' class if dot is for the current testimonial
-            onClick={() => handleDotClick(index)} // Handle dot click
+            className={`testimonial-dot ${index === currentIndex ? 'active' : ''}`}
+            onClick={() => handleDotClick(index)}
           />
         ))}
       </div>
-      {showForm ? ( // Conditional rendering for the testimonial form
-        <TestimonialForm onSubmit={addTestimonial} onCancel={() => setShowForm(false)} /> // Show form if showForm is true
+      {showForm ? (
+        <TestimonialForm onSubmit={addTestimonial} onCancel={() => setShowForm(false)} />
       ) : (
-        <button className="add-testimonial-btn" onClick={() => setShowForm(true)}>Add Your Testimonial</button> // Button to show the form
+        <button className="add-testimonial-btn" onClick={() => setShowForm(true)}>Add Your Testimonial</button>
       )}
     </div>
   );
